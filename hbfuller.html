@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>H.B. Fuller | Adhesivos e Intermedios Químicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #0f3da0;
+      --blue-d: #0b2e7a;
+      --ink: #1c2228;
+      --muted: #5b6570;
+      --line: #e4e0d8;
+      --paper: #fff;
+      --bg: #eef2f8;
+      --shadow: 0 14px 32px rgba(15, 61, 160, .08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
+      background-color: #eef2f8;
+      background-image:
+        radial-gradient(1200px 520px at 8% -12%, rgba(15, 61, 160, .14), transparent 58%),
+        radial-gradient(900px 480px at 108% 0%, rgba(11, 46, 122, .10), transparent 52%),
+        linear-gradient(180deg, rgba(255,255,255,.55), rgba(238,242,248,.92)),
+        linear-gradient(rgba(15, 61, 160, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 61, 160, .045) 1px, transparent 1px);
+      background-size: auto, auto, auto, 36px 36px, 36px 36px;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1140px, calc(100% - 40px)); margin-inline: auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 16px; }
+    .logo img { height: 28px; width: auto; }
+    .menu { display: flex; flex-wrap: wrap; gap: 15px; font-size: 13.5px; color: #445; }
+    .menu a:hover { color: var(--blue); }
+    .burger { display: none; border: 0; background: none; font-size: 26px; cursor: pointer; }
+
+    .hero { position: relative; min-height: 82vh; display: grid; place-items: end start; overflow: hidden; }
+    .hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(100deg, rgba(12,22,40,.78), rgba(12,22,40,.28));
+    }
+    .hero-copy { position: relative; z-index: 1; color: #fff; padding: 90px 0 70px; }
+    .hero-copy h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(36px, 6.2vw, 68px); line-height: 1.06; max-width: 14ch; margin-bottom: 14px;
+    }
+    .hero-copy p { max-width: 44ch; font-size: 18px; opacity: .92; margin-bottom: 26px; }
+    .btn {
+      display: inline-flex; background: var(--blue); color: #fff;
+      border-radius: 999px; padding: 12px 22px; font-weight: 650;
+      box-shadow: var(--shadow); transition: .25s background, .25s transform;
+    }
+    .btn:hover { background: var(--blue-d); transform: translateY(-1px); }
+
+    .orbit-wrap { padding: 72px 0 20px; }
+    .orbit {
+      position: relative; width: min(420px, 86vw); height: min(420px, 86vw);
+      margin: 0 auto;
+    }
+    .orbit-core {
+      position: absolute; inset: 22%; border-radius: 50%;
+      background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow);
+      display: grid; place-items: center; text-align: center; padding: 20px; z-index: 2;
+    }
+    .orbit-core small { color: var(--muted); font-size: 13px; }
+    .ring {
+      position: absolute; inset: 0;
+      animation: spin360 28s linear infinite;
+    }
+    .ring.pause { animation-play-state: paused; }
+    .sat {
+      position: absolute; top: 50%; left: 50%;
+      width: 92px; height: 92px; margin: -46px;
+      border-radius: 50%; background: #fff; border: 1px solid var(--line);
+      box-shadow: var(--shadow); display: grid; place-items: center;
+      font-size: 11px; font-weight: 650; text-align: center; padding: 8px;
+      animation: unspin360 28s linear infinite;
+    }
+    .sat:nth-child(1) { transform: rotate(0deg) translate(168px); }
+    .sat:nth-child(2) { transform: rotate(72deg) translate(168px); }
+    .sat:nth-child(3) { transform: rotate(144deg) translate(168px); }
+    .sat:nth-child(4) { transform: rotate(216deg) translate(168px); }
+    .sat:nth-child(5) { transform: rotate(288deg) translate(168px); }
+    @keyframes spin360 { to { transform: rotate(360deg); } }
+    @keyframes unspin360 { to { transform: rotate(-360deg); } }
+    .orbit-ctrl { text-align: center; margin-top: 18px; }
+    .orbit-ctrl button {
+      border: 1px solid var(--line); background: #fff; border-radius: 999px;
+      padding: 8px 16px; cursor: pointer; font: inherit;
+    }
+
+    section { padding: 84px 0; }
+    .kicker { letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--blue); font-weight: 700; margin-bottom: 8px; }
+    h2 { font-family: "Instrument Serif", Georgia, serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin-bottom: 14px; }
+    .lead { color: var(--muted); max-width: 72ch; margin-bottom: 22px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+    .photo { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); background: #ddd; }
+    .photo img { width: 100%; min-height: 320px; height: 100%; object-fit: cover; }
+
+    .cards, .features, .packs, .icons, .apps { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .features, .icons { grid-template-columns: repeat(4, 1fr); }
+    .packs, .apps { grid-template-columns: repeat(3, 1fr); }
+    .card, .feature, .pack, .char, .step, .app {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; box-shadow: var(--shadow);
+    }
+    .card, .app { overflow: hidden; display: flex; flex-direction: column; }
+    .card img, .app img, .pack img { width: 100%; object-fit: cover; }
+    .card img, .app img { height: 188px; }
+    .pack img { height: 164px; border-radius: 18px 18px 0 0; }
+    .card-body, .pack .inner, .app div { padding: 20px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+    .tag { font-size: 12px; color: var(--blue); font-weight: 700; }
+    .card h3, .app h3 { font-size: 20px; }
+    .card p, .pack p, .app p, .feature p, .char p, .step p { color: var(--muted); font-size: 14.5px; }
+    .card .btn { margin-top: auto; align-self: flex-start; padding: 8px 14px; font-size: 13px; }
+    .feature, .char, .step { padding: 20px; }
+    .char { text-align: center; }
+    .icon {
+      width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%;
+      display: grid; place-items: center; background: #eef1f8; color: var(--blue); font-weight: 700;
+    }
+    .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { width: 34%; background: #f4f2ec; }
+    .note {
+      margin-top: 16px; font-size: 14px; color: var(--muted);
+      border-left: 3px solid var(--blue); background: #fff; padding: 12px 14px; border-radius: 0 10px 10px 0;
+    }
+    .sources a { color: var(--blue); }
+    .sources li { margin: 8px 0; color: var(--muted); }
+
+    footer { background: #151a22; color: #d5d8de; padding: 40px 0 24px; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .foot a { color: #c9ced6; font-size: 14px; }
+    footer small { display: block; margin-top: 16px; color: #8b929c; }
+
+    .reveal { opacity: 0; transform: translateY(16px); animation: up .7s ease forwards; }
+    @keyframes up { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 980px) {
+      .menu { display: none; }
+      .menu.open {
+        display: flex; flex-direction: column; position: absolute; inset: 76px 0 auto;
+        background: #fff; padding: 16px 22px 22px; border-bottom: 1px solid var(--line);
+      }
+      .burger { display: block; }
+      .grid-2, .cards, .features, .packs, .icons, .apps, .flow { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+      .sat:nth-child(1) { transform: rotate(0deg) translate(38vw); }
+      .sat:nth-child(2) { transform: rotate(72deg) translate(38vw); }
+      .sat:nth-child(3) { transform: rotate(144deg) translate(38vw); }
+      .sat:nth-child(4) { transform: rotate(216deg) translate(38vw); }
+      .sat:nth-child(5) { transform: rotate(288deg) translate(38vw); }
+    }
+    @media (min-width: 701px) and (max-width: 980px) {
+      .cards, .packs, .apps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#inicio">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/H.B._Fuller_logo.svg" alt="Logotipo oficial de H.B. Fuller" />
+      </a>
+      <nav id="menu" class="menu">
+         <a href="general.html">general</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#productos">Productos</a>
+        <a href="#adhesivos">Adhesivos</a>
+        <a href="#intermedios">Intermedios químicos</a>
+        <a href="#ficha">Ficha técnica</a>
+        <a href="#formatos">Formatos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="burger" aria-label="Menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <img class="bg" alt="Pistola de adhesivo y herramientas de unión" src="https://images.pexels.com/photos/5486787/pexels-photo-5486787.jpeg?auto=compress&cs=tinysrgb&w=1800" />
+    <div class="wrap hero-copy reveal">
+      <h1>H.B. FULLER: La ciencia de unir</h1>
+      <p>Soluciones adhesivas e innovaciones químicas para la industria y la construcción.</p>
+      <a class="btn" href="#productos">Descubre nuestros productos</a>
+    </div>
+  </section>
+
+  <div class="orbit-wrap wrap">
+    <p class="kicker" style="text-align:center">Vista 360°</p>
+    <h2 style="text-align:center">Tecnologías que giran alrededor del adhesivo</h2>
+    <p class="lead" style="margin-inline:auto;text-align:center">Animación de rotación completa (360°) con familias reales de H.B. Fuller. Pulsa para pausar.</p>
+    <div class="orbit" id="orbit">
+      <div class="orbit-core">
+        <strong>H.B. Fuller</strong>
+        <small>Connecting What Matters™<br />Rotación 360°</small>
+      </div>
+      <div class="ring" id="ring">
+        <div class="sat">Hot melt<br />Advantra®</div>
+        <div class="sat">PUR<br />Swift®lock</div>
+        <div class="sat">Madera<br />Rakoll®</div>
+        <div class="sat">Envase<br />Flextra®</div>
+        <div class="sat">Obra<br />Max Bond</div>
+      </div>
+    </div>
+    <div class="orbit-ctrl">
+      <button type="button" onclick="document.getElementById('ring').classList.toggle('pause')">Pausar / reanudar 360°</button>
+    </div>
+  </div>
+
+  <section id="empresa">
+    <div class="wrap grid-2">
+      <div>
+        <p class="kicker">¿Qué es H.B. Fuller?</p>
+        <h2>El especialista global en adhesivos</h2>
+        <p class="lead">H.B. Fuller Company es un fabricante estadounidense de adhesivos, selladores y especialidades químicas, fundado en 1887 en Saint Paul, Minnesota, por Harvey Benjamin Fuller. Cotiza en la Bolsa de Nueva York (FUL). Su propósito oficial es <em>Connecting What Matters™</em>.</p>
+        <p class="lead">Se presenta como la mayor compañía “pure play” de adhesivos del mundo: más de 135 años, más de 20.000 soluciones adhesivas y más de 700 patentes. Vende en más de 140 países y atiende más de 30 segmentos de mercado.</p>
+        <p class="lead">Sus unidades de negocio cubren higiene y consumo, adhesivos de ingeniería y soluciones para edificación (Building Adhesive Solutions): techos, envolvente, vidrio aislante, madera y sellado.</p>
+      </div>
+      <figure class="photo">
+        <img alt="Laboratorio e industria adhesiva" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" />
+      </figure>
+    </div>
+    <div class="wrap features" style="margin-top:28px">
+      <article class="feature"><strong>Innovación</strong><p>Formulación a medida: una parte relevante del portafolio se desarrolla para un cliente concreto.</p></article>
+      <article class="feature"><strong>Tecnología</strong><p>Termofusibles, base agua, poliuretano reactivo, híbridos y sistemas de dos componentes.</p></article>
+      <article class="feature"><strong>Calidad</strong><p>Normas de obra y de envase (por ejemplo AS 2329 en Max Bond Original, Australia).</p></article>
+      <article class="feature"><strong>Presencia global</strong><p>Red de plantas y centros técnicos; sede mundial en Saint Paul.</p></article>
+    </div>
+  </section>
+
+  <section id="adhesivos">
+    <div class="wrap">
+      <p class="kicker">Familias</p>
+      <h2>Tipos de adhesivos</h2>
+      <p class="lead" id="productos">H.B. Fuller formula el adhesivo terminado (a diferencia de un simple vendedor de intermedios). Las marcas siguientes están publicadas por la compañía.</p>
+      <div class="cards">
+        <article class="card">
+          <img alt="Proceso industrial de pegado" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca H.B. Fuller · Termofusible</span>
+            <h3>Advantra® / hot melt</h3>
+            <p>Adhesivos termofusibles para empaque e industria. Se aplican fundidos y solidifican al enfriar.</p>
+            <p><strong>Uso:</strong> cajas, etiquetas, ensamble. <strong>Sustratos:</strong> papel, cartón y plásticos según grado.</p>
+            <a class="btn" href="#tecnologias">Ver más</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Madera y mobiliario" src="https://images.unsplash.com/photo-1504148453058-fb5ee08a0b04?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca H.B. Fuller · Base agua / PVA</span>
+            <h3>Rakoll®</h3>
+            <p>Línea de adhesivos para madera. Ejemplo publicado: Rakoll® 4933, adhesivo acuoso de acetato de polivinilo (PVA) para puertas, pisos, muebles y laminación.</p>
+            <p><strong>Uso:</strong> carpintería. <strong>Sustratos:</strong> madera, papeles, composites y foils, según ficha.</p>
+            <a class="btn" href="#tecnologias">Ver más</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Laminación industrial" src="https://images.unsplash.com/photo-1581094792503-eb5e1b3d0c8f?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca H.B. Fuller · Poliuretano</span>
+            <h3>Swift®lock y Flextra®</h3>
+            <p>Swift®lock: hot melt reactivo 1K de PU (p. ej. 2U340). Flextra®: sistemas PU para laminación de envase flexible.</p>
+            <p><strong>Uso:</strong> paneles, piso de ingeniería, films de alimentos. <strong>Sustratos:</strong> madera, plásticos, PET, aluminio, según grado.</p>
+            <a class="btn" href="#ficha">Ver más</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="intermedios">
+    <div class="wrap">
+      <p class="kicker">Química de formulación</p>
+      <h2>Intermedios químicos</h2>
+      <p class="lead">Un intermedio químico es una sustancia que sirve de materia prima para fabricar otro producto. En adhesivos, esos bloques (resinas, polímeros, isocianatos, látex, cauchos) se combinan en una fórmula.</p>
+      <p class="lead">H.B. Fuller declara familias químicas en fichas concretas —por ejemplo poliuretanos, PVA o caucho SBR en Max Bond Original— pero <strong>no publica la receta completa</strong> de cada grado. No se afirma aquí que un intermedio genérico “esté dentro” de un producto si la ficha no lo dice.</p>
+      <p class="lead">Esos componentes, en general, pueden aportar adhesión, flexibilidad, resistencia, durabilidad o comportamiento frente al clima. El resultado final depende de toda la formulación y de la aplicación.</p>
+      <div class="flow" style="margin-top:24px">
+        <article class="step"><strong>1. Materia prima</strong><p>Monómeros, cauchos, poliolos u otros insumos industriales.</p></article>
+        <article class="step"><strong>2. Intermedio</strong><p>Resina, prepolímero o dispersión lista para formular.</p></article>
+        <article class="step"><strong>3. Polímero</strong><p>PU, PVA, acrílico, SBR u hot melt, según la línea.</p></article>
+        <article class="step"><strong>4. Fórmula</strong><p>H.B. Fuller ajusta viscosidad, tiempo abierto y adherencia.</p></article>
+        <article class="step"><strong>5. Producto</strong><p>Cartucho, salchicha, granel o sistema 2K que llega a la planta o a la obra.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnologias">
+    <div class="wrap">
+      <p class="kicker">Catálogo</p>
+      <h2>Productos y tecnologías</h2>
+      <div class="cards">
+        <article class="card">
+          <img alt="Estructura de madera en obra" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <h3>Max Bond Original</h3>
+            <p class="tag">H.B. Fuller · Adhesivo de construcción</p>
+            <p>Mástico rígido de polímero sintético y caucho SBR para subpisos de madera, contramarcos y paneles. Ficha Australia.</p>
+            <a class="btn" href="#ficha">Consultar ficha técnica</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Perfiles y laminación" src="https://images.unsplash.com/photo-1615971677499-546ac4061804?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <h3>Rakoll® 4654</h3>
+            <p class="tag">H.B. Fuller · Hot melt PU reactivo</p>
+            <p>Revestimiento de perfiles de madera y laminación plana. Aplicación 120–130 °C; tiempo abierto 10–20 s (ficha).</p>
+            <a class="btn" href="#fuentes">Consultar ficha técnica</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Envase flexible" src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <h3>Flextra®</h3>
+            <p class="tag">H.B. Fuller · PU para laminación</p>
+            <p>Sistemas para films de alimentos. Ejemplo SL8314 + R405: 100 % sólidos; gramaje de capa 1,8–3,5 g/m².</p>
+            <a class="btn" href="#fuentes">Consultar ficha técnica</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ficha">
+    <div class="wrap">
+      <p class="kicker">Documento de producto</p>
+      <h2>Ficha técnica</h2>
+      <p class="lead">Ejemplo real: <strong>Max Bond Original Construction Adhesive</strong>, publicado por H.B. Fuller Australia. Es un adhesivo de obra, no un intermedio a granel. Datos de la ficha técnica y de la página de producto oficial.</p>
+      <div class="grid-2" style="margin-bottom:24px">
+        <figure class="photo">
+          <img alt="Instalación de paneles y madera" src="https://images.unsplash.com/photo-1416339442236-8ceb164046f8?auto=format&fit=crop&w=1200&q=80" />
+        </figure>
+        <div>
+          <p class="tag">Adhesivo de construcción</p>
+          <h3 style="font-size:28px;margin:8px 0 12px">Max Bond Original</h3>
+          <p class="lead">Alta resistencia, rígido, a base de caucho sintético. Pensado para subpisos de madera, molduras y paneles; también metal, madera y concreto.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Nombre</th><td>Max Bond Original Construction Adhesive</td></tr>
+          <tr><th>Marca</th><td>H.B. Fuller</td></tr>
+          <tr><th>Tipo de adhesivo</th><td>Adhesivo de construcción / mástico rígido de un componente</td></tr>
+          <tr><th>Base química (oficial)</th><td>Polímero sintético y caucho SBR; catálogo: “solvent based rubber”</td></tr>
+          <tr><th>Cómo se vende</th><td>Listo para usar, sin mezclar; cartucho, salchicha o cubeta de cartuchos</td></tr>
+          <tr><th>Presentaciones oficiales</th><td>Cartucho 320 g; cartucho jumbo 900 g; salchicha 600 ml; cubeta con 20 cartuchos de 320 g; cartucho 375 ml solo Nueva Zelanda</td></tr>
+          <tr><th>Color</th><td>Tan (beige)</td></tr>
+          <tr><th>Rendimiento</th><td>Un cartucho de 320 g rinde 14 metros lineales de cordón de 5 mm, o 2 placas de 1,2 × 2,4 m (ficha)</td></tr>
+          <tr><th>Método de aplicación</th><td>Pistola de calafateo / aplicación en cordón sobre rastreles o estructura</td></tr>
+          <tr><th>Herramienta / boquilla</th><td>Pistola para cartucho o para salchicha. El diámetro exacto de boquilla: consultar ficha técnica oficial del producto y el cordón de 5 mm usado en el cálculo de rendimiento</td></tr>
+          <tr><th>Espesor</th><td>El rendimiento se calcula con cordón de 5 mm. El catálogo indica que puede puentear huecos (hasta 5 mm en una ficha comercial asociada)</td></tr>
+          <tr><th>Tiempo de piel / ajuste</th><td>Piel: 2–5 minutos. Reposicionable hasta 20 minutos. Curado: variable según condiciones</td></tr>
+          <tr><th>Vida útil en almacén</th><td>Consultar ficha técnica oficial del producto (no se toma un número si no está en el extracto usado)</td></tr>
+          <tr><th>Usos principales</th><td>Tablero de partículas, fibrocemento, yeso, contrachapado y entarimado sobre viguetas; paneles a montantes de madera o metal; zócalos y molduras</td></tr>
+          <tr><th>Sustratos</th><td>Concreto, fibrocemento, mampostería, metal (incl. zinc y acero inoxidable), yeso, madera, contrachapado, aglomerado; la ficha cita también cerámica</td></tr>
+          <tr><th>Características</th><td>Un componente; pintable con la mayoría de recubrimientos; reduce crujidos de piso; resistente al agua; cumple requisitos AS 2329-1999</td></tr>
+          <tr><th>Almacenamiento</th><td>Consultar ficha técnica oficial del producto y la SDS correspondiente</td></tr>
+        </table>
+      </div>
+      <p class="note">Los datos técnicos pueden variar dependiendo del producto, la superficie y las condiciones de aplicación.</p>
+    </div>
+  </section>
+
+  <section id="venta">
+    <div class="wrap">
+      <p class="kicker">Envase real</p>
+      <h2>¿Cómo se vende?</h2>
+      <p class="lead">Presentaciones publicadas para Max Bond Original en Australia. Otras líneas (hot melt, Flextra) se venden a industria en formatos distintos; no se inventan aquí.</p>
+      <div class="packs">
+        <article class="pack">
+          <img alt="Cartucho de adhesivo de construcción" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Cartucho 320 g</h3>
+            <p>Max Bond Original. Tipo: cartucho. Uso: obra residencial y cordones sobre estructura.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Envase mediano de sellador" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Cartucho 900 g / salchicha 600 ml</h3>
+            <p>Mismo producto. Tipo: jumbo o unipack. Uso: más metros de cordón por envase.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Suministro para profesional" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Cubeta 20 × 320 g</h3>
+            <p>“Tradies bucket”. Tipo: pack profesional. Uso: cuadrillas y obra continua.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="formatos">
+    <div class="wrap">
+      <p class="kicker">Clasificación escolar</p>
+      <h2>Formatos y presentaciones</h2>
+      <p class="lead">Los formatos exactos dependen del producto específico. Esta división solo organiza envases ya publicados.</p>
+      <div class="packs">
+        <article class="pack">
+          <img alt="Reparación puntual" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato pequeño</h3>
+            <p>Cartucho 320 g de Max Bond Original (375 ml en NZ). Ideal para reparaciones y trabajos puntuales.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Proyecto residencial" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato mediano</h3>
+            <p>Cartucho 900 g o salchicha 600 ml. Ideal para proyectos medianos y uso profesional.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Escala de obra" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato grande o industrial</h3>
+            <p>Cubeta de 20 cartuchos; en otras líneas, granel o sistemas 2K de planta. Ideal para producción u obra grande.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Dosificación</p>
+      <h2>Rendimiento y espesor de aplicación</h2>
+      <p class="lead">El rendimiento es cuánta unión se obtiene con un envase. En Max Bond Original, H.B. Fuller lo expresa en <strong>metros de cordón de 5 mm</strong> o en número de placas. Cambia si la superficie es irregular o si el cordón es más grueso. No todos los adhesivos (por ejemplo un hot melt de planta) se miden igual.</p>
+      <div class="icons">
+        <article class="char"><div class="icon">m</div><strong>Rendimiento</strong><p>320 g → 14 m de cordón de 5 mm (ficha Max Bond Original).</p></article>
+        <article class="char"><div class="icon">↕</div><strong>Espesor</strong><p>Referencia de cálculo: 5 mm de cordón. No es un “espesor de loseta” tipo pegazulejo.</p></article>
+        <article class="char"><div class="icon">→</div><strong>Aplicación</strong><p>Pistola de cartucho o de salchicha; en PUR hot melt, fusor y boquilla o rodillo.</p></article>
+        <article class="char"><div class="icon">⏱</div><strong>Secado</strong><p>Piel 2–5 min; curado variable. Rakoll 4654: abierto 10–20 s a 120–130 °C.</p></article>
+        <article class="char"><div class="icon">▣</div><strong>Duración</strong><p>Rakoll 4654: 9 meses. Swift®lock 2U340: 6 meses en envase original cerrado.</p></article>
+      </div>
+      <p class="note">Los datos técnicos pueden variar dependiendo del producto, la superficie y las condiciones de aplicación.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Del ejemplo</p>
+      <h2>Características principales</h2>
+      <div class="icons">
+        <article class="char"><div class="icon">⊕</div><strong>Alta adherencia</strong><p>Max Bond: alta resistencia de unión y al calor.</p></article>
+        <article class="char"><div class="icon">▣</div><strong>Resistencia</strong><p>Resistente al agua; interior y exterior según ficha.</p></article>
+        <article class="char"><div class="icon">▭</div><strong>Rigidez</strong><p>Estado curado rígido, flexibilidad mínima (catálogo AU).</p></article>
+        <article class="char"><div class="icon">∞</div><strong>Durabilidad</strong><p>Pensado para subpisos y paneles de larga vida en servicio.</p></article>
+        <article class="char"><div class="icon">✦</div><strong>Innovación</strong><p>Más de 20.000 soluciones y 700+ patentes en el grupo.</p></article>
+        <article class="char"><div class="icon">⚙</div><strong>Tecnología</strong><p>Desde SBR de obra hasta PUR reactivo de planta.</p></article>
+        <article class="char"><div class="icon">↑</div><strong>Rendimiento</strong><p>14 m de cordón por cartucho de 320 g, en las condiciones de la ficha.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Mercados</p>
+      <h2>Principales aplicaciones</h2>
+      <p class="lead">Sectores que la propia compañía asocia a sus adhesivos y selladores.</p>
+      <div class="apps">
+        <article class="app">
+          <img alt="Construcción" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" />
+          <div><h3>Construcción</h3><p>Building Adhesive Solutions: cubiertas, envolvente, HVAC, vidrio aislante, madera y sellado de juntas.</p></div>
+        </article>
+        <article class="app">
+          <img alt="Industria" src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80" />
+          <div><h3>Industria</h3><p>Engineering Adhesives: ensamble durable, transporte, electrónica, electrodomésticos y maquinaria.</p></div>
+        </article>
+        <article class="app">
+          <img alt="Empaque" src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80" />
+          <div><h3>Empaque</h3><p>Hygiene, Health and Consumable: empaque flexible, higiene, conversión y bienes de consumo.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid-2">
+      <figure class="photo">
+        <img alt="Sede e innovación industrial" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" />
+      </figure>
+      <div>
+        <p class="kicker">La empresa</p>
+        <h2>Desde la cola de 1887 hasta NYSE: FUL</h2>
+        <p class="lead">Harvey Fuller empezó con pasta de harina y agua y lanzó una cola de pescado “que cementaba todo”. En 1915 se constituyó la compañía; en 1941 Elmer Andersen compró el control y la internacionalizó. Salió a bolsa en 1968 y en 2002 pasó al NYSE.</p>
+        <p class="lead">La innovación química —formular el adhesivo correcto para cada sustrato y proceso— es el oficio de la empresa, no solo revender un intermedio.</p>
+        <div class="features" style="grid-template-columns:1fr 1fr;margin-top:16px">
+          <article class="feature"><strong>Industria</strong><p>Más de 30 segmentos.</p></article>
+          <article class="feature"><strong>Tecnología</strong><p>Hot melt, PU, agua, reactivos.</p></article>
+          <article class="feature"><strong>Investigación</strong><p>Centros técnicos y patentes.</p></article>
+          <article class="feature"><strong>Presencia global</strong><p>+140 países con ventas.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sources" id="fuentes">
+    <div class="wrap">
+      <p class="kicker">Documentación</p>
+      <h2>Fuentes consultadas</h2>
+      <ul>
+        <li>Sitio corporativo: <a href="https://www.hbfuller.com" target="_blank" rel="noopener">www.hbfuller.com</a> — historia, propósito Connecting What Matters™.</li>
+        <li>H.B. Fuller Australia: <a href="https://www.hbfuller.com.au/products/adhesives/max-bond-original-construction-adhesive/" target="_blank" rel="noopener">Max Bond Original</a> y TDS (envases 320 g, 900 g, 600 ml; rendimiento 14 m / cordón 5 mm).</li>
+        <li>Fichas de producto: Swift®lock 2U340, Flextra® SL8314 + R405, Rakoll® 4654 y Rakoll® 4933 en hbfullerproducts.com.</li>
+        <li>Informes y perfil 2024–2025: unidades Hygiene/Engineering/Building Adhesive Solutions; +20.000 soluciones; +140 países.</li>
+        <li>Logotipo oficial: Wikimedia Commons, archivo extraído de hbfuller.com.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <strong>H.B. FULLER | Adhesivos e Intermedios Químicos</strong>
+          <p style="max-width:50ch;margin-top:8px;color:#9aa3ae">Investigación escolar. No es el sitio oficial de H.B. Fuller Company. No sustituye fichas técnicas ni SDS.</p>
+        </div>
+        <div>
+          <a href="#fuentes">Fuentes consultadas</a> ·
+          <a href="https://www.hbfuller.com/en/contact-us" target="_blank" rel="noopener">Contacto</a> ·
+          <a href="https://www.hbfuller.com/en/privacy-policy" target="_blank" rel="noopener">Aviso de privacidad</a>
+        </div>
+      </div>
+      <small>Proyecto escolar. Marca y logotipo: H.B. Fuller Company. Consultar siempre hbfuller.com.</small>
+    </div>
+  </footer>
+</body>
+</html>

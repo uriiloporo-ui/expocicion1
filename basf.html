@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BASF | Adhesivos e Intermedios Químicos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:#242424;
+    background:#fcfbf8;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+    --verde:#006f62;
+    --verde-claro:#e7f1ee;
+    --negro:#202321;
+    --gris:#6e716f;
+    --gris-claro:#f3f3f0;
+    --beige:#e8e0d3;
+    --blanco:#ffffff;
+    --sombra:0 15px 40px rgba(0,0,0,.08);
+}
+
+
+/* =====================================================
+   FONDO DECORATIVO
+===================================================== */
+
+.background-pattern{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    opacity:.35;
+
+    background-image:
+    linear-gradient(30deg, transparent 48%, #e7e1d7 49%, #e7e1d7 51%, transparent 52%),
+    linear-gradient(-30deg, transparent 48%, #e7e1d7 49%, #e7e1d7 51%, transparent 52%);
+
+    background-size:100px 100px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid #ececea;
+}
+
+
+/* LOGO */
+
+.logo{
+    font-family:'Montserrat',sans-serif;
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:#111;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-symbol{
+    width:30px;
+    height:30px;
+
+    border:3px solid #111;
+
+    position:relative;
+}
+
+.logo-symbol:before,
+.logo-symbol:after{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    border:2px solid #111;
+    background:white;
+}
+
+.logo-symbol:before{
+    left:-7px;
+    top:8px;
+}
+
+.logo-symbol:after{
+    right:-7px;
+    top:8px;
+}
+
+
+/* MENÚ */
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    font-size:13px;
+    font-weight:500;
+    color:#555;
+
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--verde);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:720px;
+
+    padding:80px 7%;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+
+    background:var(--verde-claro);
+
+    color:var(--verde);
+
+    padding:9px 16px;
+
+    border-radius:30px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Montserrat',sans-serif;
+
+    font-size:clamp(48px,6vw,78px);
+
+    line-height:1.05;
+
+    letter-spacing:-3px;
+
+    color:#202321;
+}
+
+.hero h1 span{
+    color:var(--verde);
+}
+
+.hero p{
+    margin-top:28px;
+
+    max-width:570px;
+
+    color:var(--gris);
+
+    font-size:17px;
+
+    line-height:1.8;
+}
+
+.button{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:35px;
+
+    padding:17px 27px;
+
+    background:var(--negro);
+
+    color:white;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.button:hover{
+    transform:translateY(-4px);
+
+    background:var(--verde);
+}
+
+
+/* IMAGEN HERO */
+
+.hero-image{
+    height:580px;
+
+    position:relative;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:var(--sombra);
+}
+
+.hero-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:transform .7s;
+}
+
+.hero-image:hover img{
+    transform:scale(1.05);
+}
+
+.hero-image:after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,111,98,.28),
+        transparent 55%
+    );
+}
+
+
+/* TARJETA FLOTANTE */
+
+.floating-card{
+    position:absolute;
+
+    bottom:25px;
+    left:25px;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(10px);
+
+    padding:20px;
+
+    border-radius:15px;
+
+    box-shadow:var(--sombra);
+
+    max-width:240px;
+}
+
+.floating-card small{
+    color:var(--verde);
+    font-weight:700;
+}
+
+.floating-card h3{
+    margin-top:8px;
+}
+
+
+/* =====================================================
+   ESTADÍSTICAS
+===================================================== */
+
+.stats{
+    padding:20px 7% 90px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+.stat{
+    background:white;
+
+    padding:28px;
+
+    border-radius:18px;
+
+    border:1px solid #ececea;
+
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-8px);
+
+    box-shadow:var(--sombra);
+}
+
+.stat h3{
+    color:var(--verde);
+
+    font-size:20px;
+}
+
+.stat p{
+    margin-top:10px;
+
+    color:var(--gris);
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+section{
+    scroll-margin-top:90px;
+}
+
+.section{
+    padding:110px 7%;
+}
+
+.section-light{
+    background:#f5f4f1;
+}
+
+.section-title{
+    max-width:760px;
+
+    margin-bottom:60px;
+}
+
+.section-title small{
+    color:var(--verde);
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    margin-top:15px;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:clamp(36px,4vw,58px);
+
+    letter-spacing:-2px;
+
+    line-height:1.1;
+}
+
+.section-title p{
+    margin-top:22px;
+
+    color:var(--gris);
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   EMPRESA
+===================================================== */
+
+.company-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.company-image{
+    height:500px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    box-shadow:var(--sombra);
+}
+
+.company-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.company-text p{
+    color:var(--gris);
+
+    line-height:1.9;
+
+    margin-bottom:20px;
+}
+
+.info-boxes{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+    margin-top:30px;
+}
+
+.info-box{
+    background:#f4f4f1;
+
+    padding:20px;
+
+    border-radius:14px;
+}
+
+.info-box strong{
+    display:block;
+
+    color:var(--verde);
+
+    margin-bottom:8px;
+}
+
+.info-box span{
+    font-size:13px;
+
+    color:var(--gris);
+}
+
+
+/* =====================================================
+   TARJETAS PRODUCTOS
+===================================================== */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+}
+
+.card{
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    border:1px solid #ececea;
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:var(--sombra);
+}
+
+.card-number{
+    width:50px;
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:var(--verde-claro);
+
+    color:var(--verde);
+
+    border-radius:14px;
+
+    font-weight:800;
+}
+
+.card h3{
+    margin-top:25px;
+
+    font-size:22px;
+}
+
+.card p{
+    margin-top:15px;
+
+    color:var(--gris);
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+.card a{
+    display:inline-block;
+
+    margin-top:25px;
+
+    color:var(--verde);
+
+    font-weight:700;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   INTERMEDIOS
+===================================================== */
+
+.intermediate-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:50px;
+}
+
+.intermediate-box{
+    background:white;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    box-shadow:var(--sombra);
+}
+
+.intermediate-box h3{
+    font-size:25px;
+
+    margin-bottom:20px;
+}
+
+.intermediate-box p{
+    color:var(--gris);
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   PROCESO QUÍMICO
+===================================================== */
+
+.process{
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.process-item{
+    padding:28px 15px;
+
+    background:white;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    border:1px solid #ececea;
+
+    min-height:140px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.process-item span{
+    color:var(--verde);
+
+    font-size:11px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.process-item strong{
+    font-size:15px;
+}
+
+.arrow{
+    text-align:center;
+
+    font-size:25px;
+
+    color:var(--verde);
+}
+
+
+/* =====================================================
+   TECNOLOGÍAS
+===================================================== */
+
+.product-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+}
+
+.product{
+    overflow:hidden;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+    transition:.35s;
+}
+
+.product:hover{
+    transform:translateY(-10px);
+}
+
+.product-image{
+    height:220px;
+
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.product:hover img{
+    transform:scale(1.08);
+}
+
+.product-content{
+    padding:28px;
+}
+
+.product-content small{
+    color:var(--verde);
+
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.product-content h3{
+    margin-top:10px;
+
+    font-size:22px;
+}
+
+.product-content p{
+    margin-top:15px;
+
+    color:var(--gris);
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FICHA TÉCNICA
+===================================================== */
+
+.technical-card{
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:var(--sombra);
+
+    border:1px solid #eaeaea;
+}
+
+.technical-header{
+    background:var(--negro);
+
+    color:white;
+
+    padding:35px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.technical-header span{
+    color:#9be2d5;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+table{
+    width:100%;
+
+    border-collapse:collapse;
+}
+
+th{
+    background:#f3f3f0;
+
+    text-align:left;
+
+    padding:20px;
+}
+
+td{
+    padding:19px 20px;
+
+    border-bottom:1px solid #eeeeee;
+
+    color:var(--gris);
+}
+
+td:first-child{
+    color:#222;
+
+    font-weight:600;
+
+    width:35%;
+}
+
+
+/* =====================================================
+   FORMATOS
+===================================================== */
+
+.formats{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+}
+
+.format{
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    border:1px solid #ececea;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.format:hover{
+    transform:translateY(-8px);
+
+    box-shadow:var(--sombra);
+}
+
+.format-icon{
+    width:70px;
+    height:70px;
+
+    margin:auto;
+
+    border-radius:20px;
+
+    background:var(--verde-claro);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--verde);
+
+    font-size:25px;
+
+    font-weight:800;
+}
+
+.format h3{
+    margin-top:22px;
+
+    font-size:22px;
+}
+
+.format p{
+    margin-top:15px;
+
+    color:var(--gris);
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   CARACTERÍSTICAS
+===================================================== */
+
+.features{
+    background:#202321;
+
+    color:white;
+
+    padding:100px 7%;
+}
+
+.features-title{
+    text-align:center;
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.features-title h2{
+    font-family:'Montserrat';
+
+    font-size:48px;
+}
+
+.features-title p{
+    color:#bfc3c1;
+
+    margin-top:18px;
+}
+
+.feature-grid{
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+.feature{
+    padding:30px;
+
+    border:1px solid #3c403d;
+
+    border-radius:18px;
+
+    transition:.3s;
+}
+
+.feature:hover{
+    background:#292d2a;
+
+    transform:translateY(-7px);
+}
+
+.feature-number{
+    color:#7de1ce;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+.feature h3{
+    margin-top:18px;
+}
+
+.feature p{
+    margin-top:12px;
+
+    color:#bfc3c1;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FUENTES
+===================================================== */
+
+.sources{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:20px;
+}
+
+.source{
+    padding:28px;
+
+    background:#f3f3f0;
+
+    border-radius:15px;
+}
+
+.source strong{
+    color:var(--verde);
+
+    display:block;
+
+    margin-bottom:10px;
+}
+
+.source p{
+    font-size:13px;
+
+    color:var(--gris);
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    background:#111312;
+
+    color:white;
+
+    padding:70px 7% 30px;
+
+    text-align:center;
+}
+
+footer h2{
+    font-family:'Montserrat';
+
+    font-size:34px;
+}
+
+footer p{
+    margin-top:10px;
+
+    color:#a9adab;
+}
+
+.footer-line{
+    width:100%;
+
+    height:1px;
+
+    background:#333735;
+
+    margin:40px 0 25px;
+}
+
+footer small{
+    color:#777d79;
+}
+
+
+/* =====================================================
+   ANIMACIONES CSS
+===================================================== */
+
+.hero-content{
+    animation:fadeLeft 1s ease;
+}
+
+.hero-image{
+    animation:fadeRight 1.2s ease;
+}
+
+@keyframes fadeLeft{
+
+    from{
+        opacity:0;
+        transform:translateX(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeRight{
+
+    from{
+        opacity:0;
+        transform:translateX(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLET
+===================================================== */
+
+@media(max-width:950px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-image{
+        height:450px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .company-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .formats{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .intermediate-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process{
+        grid-template-columns:1fr;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+    .sources{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE CELULAR
+===================================================== */
+
+@media(max-width:600px){
+
+    header{
+        padding:16px 6%;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .hero{
+        padding:70px 7%;
+    }
+
+    .hero h1{
+        font-size:46px;
+    }
+
+    .hero-image{
+        height:380px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:80px 7%;
+    }
+
+    .info-boxes{
+        grid-template-columns:1fr;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .technical-header{
+        display:block;
+    }
+
+    .technical-header span{
+        display:block;
+        margin-top:10px;
+    }
+
+    table{
+        font-size:12px;
+    }
+
+    td,
+    th{
+        padding:13px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="background-pattern"></div>
+
+
+<!-- =====================================================
+HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+        <div class="logo-symbol"></div>
+        BASF
+    </div>
+
+    <nav>
+        <a href="general.html">general</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#adhesivos">Adhesivos</a>
+        <a href="#intermedios">Intermedios</a>
+        <a href="#productos">Tecnologías</a>
+        <a href="#ficha">Ficha técnica</a>
+        <a href="#formatos">Formatos</a>
+        <a href="#fuentes">Fuentes</a>
+    </nav>
+
+</header>
+
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            INNOVACIÓN · QUÍMICA · INDUSTRIA
+        </div>
+
+        <h1>
+            BASF:
+            <br>
+            <span>La química que crea soluciones.</span>
+        </h1>
+
+        <p>
+            Adhesivos, dispersiones, resinas e intermedios químicos
+            para la industria, la construcción y el desarrollo de
+            materiales modernos.
+        </p>
+
+        <a href="#empresa" class="button">
+            Descubre más →
+        </a>
+
+    </div>
+
+
+    <div class="hero-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1200&q=80"
+        alt="Industria química">
+
+        <div class="floating-card">
+
+            <small>QUÍMICA INDUSTRIAL</small>
+
+            <h3>
+                Materiales que impulsan nuevas soluciones.
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+ESTADÍSTICAS
+===================================================== -->
+
+<div class="stats">
+
+    <div class="stat">
+        <h3>Innovación</h3>
+        <p>
+            Desarrollo de soluciones químicas para diferentes sectores industriales.
+        </p>
+    </div>
+
+    <div class="stat">
+        <h3>Química</h3>
+        <p>
+            Materias primas, polímeros, dispersiones e intermedios.
+        </p>
+    </div>
+
+    <div class="stat">
+        <h3>Industria</h3>
+        <p>
+            Aplicaciones para adhesivos, construcción y recubrimientos.
+        </p>
+    </div>
+
+    <div class="stat">
+        <h3>Sostenibilidad</h3>
+        <p>
+            Investigación y desarrollo de soluciones para nuevas necesidades.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+EMPRESA
+===================================================== -->
+
+<section class="section" id="empresa">
+
+    <div class="company-grid">
+
+        <div class="company-image">
+
+            <img
+            src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80"
+            alt="Industria e innovación">
+
+        </div>
+
+
+        <div class="company-text">
+
+            <div class="section-title">
+
+                <small>LA EMPRESA</small>
+
+                <h2>
+                    ¿Qué es BASF?
+                </h2>
+
+            </div>
+
+            <p>
+                BASF es una empresa química con actividades en diferentes
+                áreas industriales. Su portafolio incluye productos y
+                soluciones para sectores relacionados con productos químicos,
+                materiales, industria y tecnología.
+            </p>
+
+            <p>
+                Entre sus áreas se encuentran los intermedios químicos y
+                las dispersiones, resinas y aditivos, que pueden funcionar
+                como materias primas dentro de diversas formulaciones.
+            </p>
+
+
+            <div class="info-boxes">
+
+                <div class="info-box">
+
+                    <strong>Innovación</strong>
+
+                    <span>
+                        Investigación y desarrollo químico.
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>Industria</strong>
+
+                    <span>
+                        Materiales para diferentes aplicaciones.
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>Investigación</strong>
+
+                    <span>
+                        Desarrollo de nuevas tecnologías.
+                    </span>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>Materiales</strong>
+
+                    <span>
+                        Productos para cadenas industriales.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+ADHESIVOS
+===================================================== -->
+
+<section class="section section-light" id="adhesivos">
+
+    <div class="section-title">
+
+        <small>ÁREAS DE APLICACIÓN</small>
+
+        <h2>
+            Adhesivos y materias primas químicas
+        </h2>
+
+        <p>
+            BASF desarrolla y suministra materias primas utilizadas
+            en formulaciones para diferentes industrias, incluyendo
+            aplicaciones relacionadas con adhesivos, recubrimientos,
+            construcción y otros materiales.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-number">
+                01
+            </div>
+
+            <h3>
+                Dispersiones
+            </h3>
+
+            <p>
+                Sistemas poliméricos utilizados como materias primas
+                en formulaciones industriales.
+            </p>
+
+            <a href="#productos">
+                Consultar →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02
+            </div>
+
+            <h3>
+                Resinas
+            </h3>
+
+            <p>
+                Componentes químicos empleados en diferentes
+                formulaciones y aplicaciones industriales.
+            </p>
+
+            <a href="#productos">
+                Consultar →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03
+            </div>
+
+            <h3>
+                Aditivos
+            </h3>
+
+            <p>
+                Materiales utilizados para modificar o mejorar
+                determinadas propiedades de una formulación.
+            </p>
+
+            <a href="#productos">
+                Consultar →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+INTERMEDIOS
+===================================================== -->
+
+<section class="section" id="intermedios">
+
+    <div class="section-title">
+
+        <small>QUÍMICA INDUSTRIAL</small>
+
+        <h2>
+            Intermedios químicos
+        </h2>
+
+        <p>
+            Los intermedios químicos son sustancias utilizadas como
+            componentes o materias primas para fabricar otros productos
+            químicos y desarrollar diferentes cadenas de producción.
+        </p>
+
+    </div>
+
+
+    <div class="intermediate-grid">
+
+        <div class="intermediate-box">
+
+            <h3>
+                ¿Qué son?
+            </h3>
+
+            <p>
+                Son compuestos químicos que funcionan como bloques de
+                construcción para producir otros materiales, productos
+                y soluciones industriales.
+            </p>
+
+        </div>
+
+
+        <div class="intermediate-box">
+
+            <h3>
+                ¿Para qué se utilizan?
+            </h3>
+
+            <p>
+                Dependiendo del compuesto y de la formulación, pueden
+                formar parte de cadenas relacionadas con polímeros,
+                resinas, recubrimientos, construcción y otros materiales.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="process">
+
+        <div class="process-item">
+
+            <span>ETAPA 01</span>
+
+            <strong>
+                Materia prima química
+            </strong>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="process-item">
+
+            <span>ETAPA 02</span>
+
+            <strong>
+                Intermedio químico
+            </strong>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="process-item">
+
+            <span>ETAPA 03</span>
+
+            <strong>
+                Resina o polímero
+            </strong>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="process-item">
+
+            <span>ETAPA 04</span>
+
+            <strong>
+                Producto terminado
+            </strong>
+
+        </div>
+
+
+        <div class="arrow">
+            →
+        </div>
+
+
+        <div class="process-item">
+
+            <span>RESULTADO</span>
+
+            <strong>
+                Adhesivo, sellador o recubrimiento
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+PRODUCTOS
+===================================================== -->
+
+<section class="section section-light" id="productos">
+
+    <div class="section-title">
+
+        <small>TECNOLOGÍAS Y MATERIALES</small>
+
+        <h2>
+            Productos y tecnologías
+        </h2>
+
+        <p>
+            BASF cuenta con áreas de dispersions, resins, additives
+            e intermediates que proporcionan materias primas y
+            componentes para diferentes aplicaciones industriales.
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80"
+                alt="Laboratorio químico">
+
+            </div>
+
+            <div class="product-content">
+
+                <small>BASF · DISPERSIONS</small>
+
+                <h3>
+                    Dispersiones poliméricas
+                </h3>
+
+                <p>
+                    Sistemas utilizados como materias primas en
+                    formulaciones para diferentes aplicaciones industriales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=1000&q=80"
+                alt="Industria química">
+
+            </div>
+
+            <div class="product-content">
+
+                <small>BASF · RESINS</small>
+
+                <h3>
+                    Resinas y materiales
+                </h3>
+
+                <p>
+                    Componentes utilizados en diferentes sistemas y
+                    formulaciones industriales.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=80"
+                alt="Industria moderna">
+
+            </div>
+
+            <div class="product-content">
+
+                <small>BASF · INTERMEDIATES</small>
+
+                <h3>
+                    Intermedios químicos
+                </h3>
+
+                <p>
+                    Productos químicos utilizados como bloques de
+                    construcción dentro de diferentes cadenas industriales.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+FICHA TÉCNICA
+===================================================== -->
+
+<section class="section" id="ficha">
+
+    <div class="section-title">
+
+        <small>INFORMACIÓN TÉCNICA</small>
+
+        <h2>
+            Ficha técnica
+        </h2>
+
+        <p>
+            Ejemplo de cómo debe presentarse la información técnica.
+            Los datos específicos deben verificarse siempre en la
+            documentación oficial del producto seleccionado.
+        </p>
+
+    </div>
+
+
+    <div class="technical-card">
+
+        <div class="technical-header">
+
+            <div>
+
+                <h2>
+                    Material / Tecnología BASF
+                </h2>
+
+                <p>
+                    Ejemplo de ficha informativa
+                </p>
+
+            </div>
+
+            <span>
+                BASF
+            </span>
+
+        </div>
+
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Característica
+                </th>
+
+                <th>
+                    Información
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Marca
+                </td>
+
+                <td>
+                    BASF
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Tipo de material
+                </td>
+
+                <td>
+                    Materia prima o componente químico industrial
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Aplicación
+                </td>
+
+                <td>
+                    Depende del producto y la formulación específica
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Rendimiento
+                </td>
+
+                <td>
+                    Depende del producto final donde sea utilizado
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Espesor
+                </td>
+
+                <td>
+                    No aplica directamente cuando se trata de una materia prima química
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Método de aplicación
+                </td>
+
+                <td>
+                    Depende del producto terminado
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Duración o vida útil
+                </td>
+
+                <td>
+                    Consultar documentación técnica oficial
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+FORMATOS
+===================================================== -->
+
+<section class="section section-light" id="formatos">
+
+    <div class="section-title">
+
+        <small>PRESENTACIONES</small>
+
+        <h2>
+            Formatos y presentaciones
+        </h2>
+
+        <p>
+            Las presentaciones comerciales pueden variar según el
+            producto específico, la región y el mercado.
+        </p>
+
+    </div>
+
+
+    <div class="formats">
+
+        <div class="format">
+
+            <div class="format-icon">
+                S
+            </div>
+
+            <h3>
+                Formato pequeño
+            </h3>
+
+            <p>
+                Presentaciones de menor capacidad, únicamente cuando
+                estén disponibles para el producto específico.
+            </p>
+
+        </div>
+
+
+        <div class="format">
+
+            <div class="format-icon">
+                M
+            </div>
+
+            <h3>
+                Formato mediano
+            </h3>
+
+            <p>
+                Envases o presentaciones utilizadas dependiendo de
+                las necesidades comerciales e industriales.
+            </p>
+
+        </div>
+
+
+        <div class="format">
+
+            <div class="format-icon">
+                L
+            </div>
+
+            <h3>
+                Formato industrial
+            </h3>
+
+            <p>
+                Ejemplos como tambores, sacos o contenedores pueden
+                existir dependiendo del producto.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+CARACTERÍSTICAS
+===================================================== -->
+
+<section class="features">
+
+    <div class="features-title">
+
+        <h2>
+            Características principales
+        </h2>
+
+        <p>
+            Propiedades y conceptos relacionados con el desarrollo
+            de materiales químicos y soluciones industriales.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature">
+
+            <div class="feature-number">
+                01
+            </div>
+
+            <h3>
+                Innovación
+            </h3>
+
+            <p>
+                Desarrollo continuo de nuevas soluciones y tecnologías.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                02
+            </div>
+
+            <h3>
+                Calidad
+            </h3>
+
+            <p>
+                Materiales diseñados para diferentes necesidades industriales.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                03
+            </div>
+
+            <h3>
+                Tecnología
+            </h3>
+
+            <p>
+                Investigación aplicada a productos y formulaciones.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-number">
+                04
+            </div>
+
+            <h3>
+                Sostenibilidad
+            </h3>
+
+            <p>
+                Desarrollo de soluciones orientadas a nuevas necesidades.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+FUENTES
+===================================================== -->
+
+<section class="section" id="fuentes">
+
+    <div class="section-title">
+
+        <small>INVESTIGACIÓN</small>
+
+        <h2>
+            Fuentes consultadas
+        </h2>
+
+        <p>
+            Para completar la información técnica de productos específicos,
+            se deben utilizar fuentes oficiales y documentación verificable.
+        </p>
+
+    </div>
+
+
+    <div class="sources">
+
+        <div class="source">
+
+            <strong>
+                BASF Oficial
+            </strong>
+
+            <p>
+                Información general sobre la empresa y sus diferentes
+                áreas de actividad.
+            </p>
+
+        </div>
+
+
+        <div class="source">
+
+            <strong>
+                Dispersions & Resins
+            </strong>
+
+            <p>
+                Información sobre dispersiones, resinas, aditivos y
+                aplicaciones industriales.
+            </p>
+
+        </div>
+
+
+        <div class="source">
+
+            <strong>
+                BASF Intermediates
+            </strong>
+
+            <p>
+                Información sobre intermedios químicos y materias primas
+                para diferentes cadenas industriales.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+    <h2>
+        BASF
+    </h2>
+
+    <p>
+        Adhesivos · Dispersiones · Resinas · Intermedios químicos
+    </p>
+
+    <div class="footer-line"></div>
+
+    <small>
+        Proyecto académico elaborado con fines educativos.
+        Las marcas e información pertenecen a sus respectivos propietarios.
+    </small>
+
+</footer>
+
+
+</body>
+</html>

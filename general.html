@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obra Fina — Acabados de construcción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plaster: #EDE9E1;
+    --plaster-dim: #E1DBCF;
+    --carbon: #1F1B18;
+    --carbon-soft: #34302B;
+    --oxide: #8C3A1E;
+    --oxide-dim: #6E2E17;
+    --wood: #B08A5C;
+    --concrete: #C9C2B4;
+    --line: rgba(31,27,24,0.14);
+    --line-light: rgba(237,233,225,0.18);
+    --max: 1160px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Archivo', sans-serif;
+    background:var(--plaster);
+    color:var(--carbon);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-weight:900; letter-spacing:-0.01em; line-height:1.02;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:3px solid var(--oxide); outline-offset:3px;
+  }
+
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,233,225,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:900; font-size:20px;}
+  .brand .mark{
+    width:14px; height:14px; background:var(--oxide);
+    transform:rotate(45deg);
+    flex-shrink:0;
+  }
+  nav.links{display:flex; gap:28px; font-size:15px; font-weight:600;}
+  nav.links a{position:relative; padding:4px 0;}
+  nav.links a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:0; height:2px;
+    background:var(--oxide); transition:right .25s ease;
+  }
+  nav.links a:hover::after{right:0;}
+  .nav-cta{
+    background:var(--carbon); color:var(--plaster);
+    padding:10px 20px; font-weight:700; font-size:14px;
+  }
+  .nav-cta:hover{background:var(--oxide);}
+
+  .hero{position:relative; padding:96px 0 0; overflow:hidden;}
+  .hero-inner{
+    max-width:var(--max); margin:0 auto; padding:0 32px 0;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:end;
+  }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:12px; margin-bottom:22px;
+    font-size:13px; font-weight:600; color:var(--carbon-soft);
+  }
+  .eyebrow-line .num{color:var(--oxide); font-weight:900;}
+  .hero h1{
+    font-size:clamp(42px, 6.4vw, 84px);
+    text-transform:uppercase;
+  }
+  .hero h1 span{display:block;}
+  .hero h1 .accent{color:var(--oxide);}
+  .hero p.lead{
+    max-width:46ch; margin-top:24px; font-size:18px; color:var(--carbon-soft);
+  }
+  .hero-cta-row{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; font-weight:700; font-size:15px;
+    border:2px solid var(--carbon); cursor:pointer;
+  }
+  .btn-solid{background:var(--carbon); color:var(--plaster);}
+  .btn-solid:hover{background:var(--oxide); border-color:var(--oxide);}
+  .btn-outline{background:transparent; color:var(--carbon);}
+  .btn-outline:hover{background:var(--carbon); color:var(--plaster);}
+
+  .hero-visual{position:relative; height:340px; align-self:end;}
+  .layers{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    border:1px solid var(--carbon);
+  }
+  .layer{position:relative; display:flex; align-items:center; padding:0 18px; overflow:hidden;}
+  .layer .tag{
+    position:relative; z-index:2; font-size:11px; font-weight:700; letter-spacing:0.04em;
+    background:var(--plaster); padding:2px 8px; border:1px solid var(--carbon);
+  }
+  .layer.base{height:20%; background:repeating-linear-gradient(135deg, #d8d2c4 0 6px, #cfc8b8 6px 12px);}
+  .layer.mortero{height:26%; background:linear-gradient(180deg, #b9b2a2, #a49b89);}
+  .layer.acabado{
+    height:54%;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.12), transparent 55%),
+      linear-gradient(135deg, var(--oxide), var(--oxide-dim));
+  }
+  .hero-visual .depth-line{
+    position:absolute; right:-14px; top:0; bottom:0; width:2px; background:var(--carbon);
+  }
+  .hero-visual .depth-line::before, .hero-visual .depth-line::after{
+    content:""; position:absolute; left:-4px; width:10px; height:2px; background:var(--carbon);
+  }
+  .hero-visual .depth-line::before{top:0;}
+  .hero-visual .depth-line::after{bottom:0;}
+
+  .trust-strip{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    margin-top:80px;
+  }
+  .trust-inner{
+    max-width:var(--max); margin:0 auto; padding:22px 32px;
+    display:flex; gap:48px; flex-wrap:wrap; justify-content:space-between;
+  }
+  .trust-item{font-size:14px; font-weight:600; color:var(--carbon-soft); display:flex; gap:10px; align-items:baseline;}
+  .trust-item b{font-size:26px; font-weight:900; color:var(--carbon);}
+
+  section{padding:100px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    margin-bottom:56px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(30px,4vw,46px); text-transform:uppercase; max-width:16ch;}
+  .section-head p{max-width:38ch; color:var(--carbon-soft); font-size:15px;}
+
+  /* adhesivos 3D */
+  .adhesivos{background:var(--plaster-dim);}
+  .adh-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .adh-copy h3{font-size:22px; margin:0 0 10px; text-transform:none;}
+  .adh-copy p{font-size:15px; color:var(--carbon-soft); margin-bottom:22px; max-width:48ch;}
+  .adh-cards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;}
+  .adh-card{
+    background:var(--plaster); border:1px solid var(--line); padding:20px 18px;
+  }
+  .adh-card span{display:block; font-size:12px; font-weight:700; color:var(--oxide); letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px;}
+  .adh-card p{font-size:14px; color:var(--carbon-soft); margin:0;}
+
+  .iso-stage{
+    perspective:1100px;
+    min-height:420px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .iso{
+    width:280px; height:280px;
+    position:relative;
+    transform-style:preserve-3d;
+    transform:rotateX(58deg) rotateZ(-32deg);
+    animation:isoSpin 18s linear infinite;
+  }
+  @keyframes isoSpin{
+    0%{transform:rotateX(58deg) rotateZ(-32deg);}
+    50%{transform:rotateX(58deg) rotateZ(-22deg);}
+    100%{transform:rotateX(58deg) rotateZ(-32deg);}
+  }
+  .slab{
+    position:absolute; left:0; top:0; width:280px; height:280px;
+    transform-style:preserve-3d;
+    border:1px solid rgba(31,27,24,.35);
+  }
+  .slab .face{
+    position:absolute; inset:0;
+    display:flex; align-items:flex-end; justify-content:flex-start;
+    padding:14px;
+    font-size:11px; font-weight:800; letter-spacing:.06em;
+  }
+  .slab .edge-y, .slab .edge-x{
+    position:absolute; background:inherit; filter:brightness(.72);
+  }
+  .slab .edge-y{width:18px; height:100%; right:-18px; top:0; transform:rotateY(90deg); transform-origin:left center;}
+  .slab .edge-x{width:100%; height:18px; left:0; bottom:-18px; transform:rotateX(-90deg); transform-origin:top center; filter:brightness(.55);}
+  .s1{transform:translateZ(0); background:#cfc8b8;}
+  .s1 .face{background:repeating-linear-gradient(135deg,#d8d2c4 0 8px,#c4bca9 8px 16px);}
+  .s2{transform:translateZ(42px); background:#a89f8c;}
+  .s2 .face{background:linear-gradient(135deg,#b7ad98,#8f8673);}
+  .s3{transform:translateZ(78px); background:var(--wood);}
+  .s3 .face{background:linear-gradient(135deg,#c49a68,#8d6840); color:#1F1B18;}
+  .s4{transform:translateZ(118px); background:var(--oxide);}
+  .s4 .face{background:linear-gradient(135deg,#a44a28,#6E2E17); color:#EDE9E1;}
+  .iso-legend{
+    margin-top:22px; display:flex; flex-wrap:wrap; gap:10px 16px; justify-content:center;
+    font-size:12px; font-weight:700; color:var(--carbon-soft);
+  }
+  .iso-legend i{
+    display:inline-block; width:10px; height:10px; margin-right:6px; vertical-align:middle;
+  }
+
+  .brands-bar{
+    margin-top:48px; padding-top:28px; border-top:1px solid var(--line);
+  }
+  .brands-bar h3{
+    font-size:13px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--carbon-soft); margin-bottom:16px; font-weight:700;
+  }
+  .brand-links{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:10px;
+  }
+  .brand-links a{
+    display:flex; align-items:center; justify-content:center;
+    min-height:64px; border:1px solid var(--carbon);
+    background:var(--plaster); font-weight:900; font-size:13px; letter-spacing:.04em;
+    text-transform:uppercase;
+  }
+  .brand-links a:hover{background:var(--carbon); color:var(--plaster);}
+
+  .services{background:var(--carbon); color:var(--plaster);}
+  .services .section-head p, .services .eyebrow-line{color:#B9B2A6;}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line-light); border:1px solid var(--line-light);
+  }
+  .service-card{
+    background:var(--carbon); padding:34px 28px; min-height:230px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .service-card:hover{background:var(--carbon-soft);}
+  .service-card .swatch{width:34px; height:34px; margin-bottom:auto;}
+  .service-card h3{font-size:20px; font-weight:700; text-transform:none; margin-top:22px; margin-bottom:8px;}
+  .service-card p{font-size:14px; color:#B9B2A6;}
+
+  .process-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+  }
+  .process-step{padding:32px 26px 32px 0; border-right:1px solid var(--line);}
+  .process-step:last-child{border-right:none;}
+  .process-step .step-num{
+    font-size:44px; font-weight:900; color:var(--concrete);
+    display:block; margin-bottom:18px;
+  }
+  .process-step h3{font-size:18px; margin-bottom:10px;}
+  .process-step p{font-size:14px; color:var(--carbon-soft);}
+
+  .compare-wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  .compare-box{
+    position:relative; height:380px; overflow:hidden; border:1px solid var(--carbon);
+    cursor:ew-resize; user-select:none;
+  }
+  .compare-side{position:absolute; inset:0;}
+  .compare-side.rough{
+    background:
+      repeating-linear-gradient(115deg, #cfc8b8 0 3px, #bdb4a1 3px 7px),
+      linear-gradient(180deg,#c9c2b4,#b3ab99);
+  }
+  .compare-side.fine{
+    background:linear-gradient(155deg, #3a3128 0%, var(--carbon) 55%, var(--oxide-dim) 130%);
+  }
+  .compare-side .label{
+    position:absolute; bottom:20px; font-size:13px; font-weight:700;
+    padding:6px 12px; background:var(--plaster); border:1px solid var(--carbon);
+  }
+  .compare-side.rough .label{left:20px;}
+  .compare-side.fine .label{right:20px; background:var(--carbon); color:var(--plaster); border-color:var(--plaster);}
+  .compare-clip{position:absolute; inset:0; overflow:hidden; width:50%;}
+  .compare-handle{
+    position:absolute; top:0; bottom:0; left:50%; width:2px; background:var(--plaster);
+    transform:translateX(-1px);
+  }
+  .compare-handle .grip{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:44px; height:44px; border-radius:50%; background:var(--plaster);
+    border:2px solid var(--carbon); display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:900;
+  }
+  .compare-caption{margin-top:18px; font-size:14px; color:var(--carbon-soft); max-width:52ch;}
+
+  .why{background:var(--plaster-dim);}
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:44px;}
+  .why-item .idx{font-size:13px; font-weight:700; color:var(--oxide); margin-bottom:14px; display:block;}
+  .why-item h3{font-size:19px; margin-bottom:10px; text-transform:none;}
+  .why-item p{font-size:14.5px; color:var(--carbon-soft);}
+
+  .testi{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .testi-card{background:var(--plaster); padding:36px; min-height:200px; display:flex; flex-direction:column; justify-content:space-between;}
+  .testi-card p.quote{font-size:17px;}
+  .testi-card .who{margin-top:22px; font-size:13px; font-weight:700; color:var(--carbon-soft);}
+
+  .contact{background:var(--carbon); color:var(--plaster);}
+  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px;}
+  .contact h2{font-size:clamp(30px,4vw,46px); text-transform:uppercase; margin-bottom:20px;}
+  .contact p.lead{color:#B9B2A6; max-width:40ch; margin-bottom:30px;}
+  .contact-detail{display:flex; gap:14px; padding:14px 0; border-top:1px solid var(--line-light); font-size:14.5px;}
+  .contact-detail:last-child{border-bottom:1px solid var(--line-light);}
+  .contact-detail b{display:block; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#B9B2A6; margin-bottom:4px; font-weight:700;}
+
+  form{display:flex; flex-direction:column; gap:18px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  label{font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#B9B2A6; margin-bottom:8px; display:block;}
+  input, textarea, select{
+    width:100%; background:transparent; border:none; border-bottom:2px solid #4A4038;
+    color:var(--plaster); font-family:'Archivo',sans-serif; font-size:15px; padding:10px 2px;
+  }
+  select option{color:var(--carbon);}
+  input::placeholder, textarea::placeholder{color:#6b6259;}
+  textarea{resize:vertical; min-height:80px;}
+  input:focus, textarea:focus, select:focus{border-color:var(--oxide);}
+  .form-submit{
+    margin-top:10px; align-self:flex-start;
+    background:var(--oxide); color:var(--plaster); border:2px solid var(--oxide);
+    padding:15px 30px; font-weight:700; font-size:15px; cursor:pointer;
+  }
+  .form-submit:hover{background:transparent; color:var(--plaster);}
+  .form-note{font-size:13px; color:#8f867b; margin-top:4px;}
+
+  footer{padding:34px 0; border-top:1px solid var(--line-light);}
+  .footer-inner{
+    max-width:var(--max); margin:0 auto; padding:0 32px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-size:13px; color:#8f867b;
+  }
+
+  @media (max-width:900px){
+    nav.links{display:none;}
+    .hero-inner, .adh-grid, .contact-grid{grid-template-columns:1fr;}
+    .hero-visual{height:220px; margin-top:40px;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .process-grid{grid-template-columns:1fr 1fr;}
+    .process-step{border-bottom:1px solid var(--line);}
+    .why-grid{grid-template-columns:1fr;}
+    .testi{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .brand-links{grid-template-columns:1fr 1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .service-grid, .process-grid, .adh-cards, .brand-links{grid-template-columns:1fr;}
+    .iso{transform:rotateX(58deg) rotateZ(-32deg) scale(.82);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#inicio"><span class="mark"></span>OBRA FINA</a>
+    <nav class="links">
+      <a href="#adhesivos">Adhesivos</a>
+      <a href="#marcas">Marcas</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#comparador">Trabajos</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+    <a class="nav-cta" href="#contacto">Cotizar</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow-line"><span class="num">01</span> Acabados de construcción</div>
+      <h1>
+        <span>De obra en bruto</span>
+        <span class="accent">a espacio terminado.</span>
+      </h1>
+      <p class="lead">Pisos, pintura, yesos, carpintería e instalaciones. Tomamos el trabajo donde lo dejó la obra gris y lo llevamos al detalle que se nota al tacto.</p>
+      <div class="hero-cta-row">
+        <a href="#contacto" class="btn btn-solid">Solicitar cotización</a>
+        <a href="#adhesivos" class="btn btn-outline">Ver adhesivos</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="layers">
+        <div class="layer acabado"><span class="tag">ACABADO</span></div>
+        <div class="layer mortero"><span class="tag">MORTERO</span></div>
+        <div class="layer base"><span class="tag">BASE</span></div>
+      </div>
+      <div class="depth-line"></div>
+    </div>
+  </div>
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><b>12</b> años de oficio</div>
+      <div class="trust-item"><b>340+</b> espacios entregados</div>
+      <div class="trust-item"><b>6</b> especialidades bajo un mismo equipo</div>
+      <div class="trust-item"><b>1</b> garantía por escrito, siempre</div>
+    </div>
+  </div>
+</section>
+
+<section id="adhesivos" class="adhesivos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Adhesivos e intermedios</h2>
+      <p>La capa que no se ve es la que sostiene el acabado. Por eso especificamos sistema completo, no solo el recubrimiento final.</p>
+    </div>
+
+    <div class="adh-grid">
+      <div class="adh-copy">
+        <h3>Qué son los adhesivos</h3>
+        <p>Son los productos que unen el recubrimiento al soporte: piso, muro o elemento estructural. Pegazulejo, adhesivos cementosos, epóxicos e híbridos transmiten carga, absorben movimiento y evitan que el acabado se desprenda.</p>
+
+        <h3>Qué son los intermedios</h3>
+        <p>Son las capas entre la obra gris y el acabado visible: imprimaciones, puentes de adherencia, niveladores, membranas e impermeabilizantes. Preparan, sellan y nivelan el sustrato para que el adhesivo y el recubrimiento trabajen bien.</p>
+
+        <div class="adh-cards">
+          <div class="adh-card">
+            <span>Adhesivo</span>
+            <p>Une cerámica, porcelanato, piedra, madera o metal al soporte ya preparado.</p>
+          </div>
+          <div class="adh-card">
+            <span>Intermedio</span>
+            <p>Corrige porosidad, humedad y desniveles antes de colocar el acabado final.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="iso-stage" aria-hidden="true">
+          <div class="iso">
+            <div class="slab s1">
+              <div class="face">BASE</div>
+              <div class="edge-y"></div>
+              <div class="edge-x"></div>
+            </div>
+            <div class="slab s2">
+              <div class="face">INTERMEDIO</div>
+              <div class="edge-y"></div>
+              <div class="edge-x"></div>
+            </div>
+            <div class="slab s3">
+              <div class="face">ADHESIVO</div>
+              <div class="edge-y"></div>
+              <div class="edge-x"></div>
+            </div>
+            <div class="slab s4">
+              <div class="face">ACABADO</div>
+              <div class="edge-y"></div>
+              <div class="edge-x"></div>
+            </div>
+          </div>
+        </div>
+        <div class="iso-legend">
+          <span><i style="background:#cfc8b8"></i>Base / sustrato</span>
+          <span><i style="background:#8f8673"></i>Intermedio</span>
+          <span><i style="background:#B08A5C"></i>Adhesivo</span>
+          <span><i style="background:#8C3A1E"></i>Acabado</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="brands-bar" id="marcas">
+      <h3>Marcas que especificamos y aplicamos</h3>
+      <div class="brand-links">
+        <a href="basf.html">BASF</a>
+        <a href="fester.html">Fester</a>
+        <a href="hbfuller.html">H.B. Fuller</a>
+        <a href="henkle.html">Henkel</a>
+        <a href="sika.html">Sika</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Lo que hacemos</h2>
+      <p>Seis oficios coordinados por un solo responsable de obra, para que no tengas que administrar a seis proveedores distintos.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><rect x="1" y="1" width="32" height="32" stroke="#B08A5C" stroke-width="2"/><path d="M1 12h32M1 22h32M12 1v32M22 1v32" stroke="#B08A5C" stroke-width="1"/></svg>
+        <div>
+          <h3>Pisos</h3>
+          <p>Porcelanato, madera, vinílico y microcemento. Nivelación, corte y colocación de precisión.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15" stroke="#B08A5C" stroke-width="2"/></svg>
+        <div>
+          <h3>Pintura y texturizados</h3>
+          <p>Interior, exterior y acabados especiales: estuco, esmalte al agua, efectos decorativos.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><rect x="4" y="4" width="26" height="26" stroke="#B08A5C" stroke-width="2" rx="1"/><rect x="10" y="10" width="14" height="14" stroke="#B08A5C" stroke-width="1"/></svg>
+        <div>
+          <h3>Yesos y plafones</h3>
+          <p>Falsos plafones, molduras y muros de tablaroca con acabado listo para pintar.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><path d="M4 30 L4 8 L17 4 L30 8 L30 30" stroke="#B08A5C" stroke-width="2" fill="none"/></svg>
+        <div>
+          <h3>Carpintería</h3>
+          <p>Closets, cocinas integrales, puertas y muebles a medida en melamina o madera sólida.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><rect x="8" y="2" width="18" height="30" stroke="#B08A5C" stroke-width="2"/><path d="M8 10h18M8 24h18" stroke="#B08A5C" stroke-width="1"/></svg>
+        <div>
+          <h3>Puertas y ventanas</h3>
+          <p>Suministro e instalación de cancelería de aluminio, PVC y herrería.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <svg class="swatch" viewBox="0 0 34 34" fill="none"><path d="M4 20c6-14 20-14 26 0" stroke="#B08A5C" stroke-width="2" fill="none"/><path d="M4 20l26 0" stroke="#B08A5C" stroke-width="2"/></svg>
+        <div>
+          <h3>Impermeabilización</h3>
+          <p>Azoteas, terrazas y muros de contención con garantía contra filtraciones.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cómo trabajamos</h2>
+      <p>Un proceso ordenado para que sepas exactamente qué va a pasar y cuándo.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-num">01</span>
+        <h3>Diagnóstico en sitio</h3>
+        <p>Visitamos el espacio, medimos y anotamos el estado real de la obra antes de prometer nada.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">02</span>
+        <h3>Cotización detallada</h3>
+        <p>Desglose por partida: materiales, mano de obra y tiempos, sin letras chiquitas.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">03</span>
+        <h3>Ejecución</h3>
+        <p>Avance documentado con fotos y reportes semanales de obra.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-num">04</span>
+        <h3>Entrega y garantía</h3>
+        <p>Recorrido final contigo y garantía por escrito sobre el trabajo terminado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comparador">
+  <div class="compare-wrap">
+    <div class="section-head">
+      <h2>Obra gris vs. acabado</h2>
+      <p>Arrastra la línea para ver la diferencia entre un espacio en proceso y uno entregado.</p>
+    </div>
+    <div class="compare-box" id="compareBox">
+      <div class="compare-side rough"><span class="label">OBRA EN PROCESO</span></div>
+      <div class="compare-clip" id="compareClip">
+        <div class="compare-side fine" style="width:200%;"><span class="label">ACABADO ENTREGADO</span></div>
+      </div>
+      <div class="compare-handle" id="compareHandle"><div class="grip">⇔</div></div>
+    </div>
+    <p class="compare-caption">Representación ilustrativa del contraste entre etapas de obra — súbelo con fotos reales de tus propios proyectos cuando los tengas listos.</p>
+  </div>
+</section>
+
+<section id="nosotros" class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Por qué Obra Fina</h2>
+      <p>Lo que nos diferencia no es solo el resultado, es cómo llegamos a él.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="idx">—</span>
+        <h3>Un solo responsable</h3>
+        <p>Nada de coordinar tú mismo al pintor, al carpintero y al plomero. Un jefe de obra responde por todo.</p>
+      </div>
+      <div class="why-item">
+        <span class="idx">—</span>
+        <h3>Precios cerrados</h3>
+        <p>La cotización que firmamos es la que se respeta. Cualquier cambio se acuerda antes, por escrito.</p>
+      </div>
+      <div class="why-item">
+        <span class="idx">—</span>
+        <h3>Garantía real</h3>
+        <p>Si algo falla por el trabajo realizado, regresamos a corregirlo sin costo dentro del periodo de garantía.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Clientes</h2>
+    </div>
+    <div class="testi">
+      <div class="testi-card">
+        <p class="quote">Cotizaron claro y cumplieron el tiempo prometido en la remodelación de nuestra sala y cocina.</p>
+        <div class="who">— Cliente residencial, remodelación integral</div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">Coordinaron pintura, piso y carpintería de nuestras oficinas sin detener la operación diaria.</p>
+        <div class="who">— Cliente comercial, oficinas corporativas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2>Hablemos de tu obra</h2>
+        <p class="lead">Cuéntanos qué espacio quieres transformar. Respondemos cotizaciones en menos de 48 horas.</p>
+        <div class="contact-detail">
+          <div><b>WhatsApp</b>+52 55 0000 0000</div>
+        </div>
+        <div class="contact-detail">
+          <div><b>Correo</b>hola@obrafina.mx</div>
+        </div>
+        <div class="contact-detail">
+          <div><b>Zona de cobertura</b>Cuautitlán Izcalli y área metropolitana</div>
+        </div>
+      </div>
+      <form onsubmit="return false;">
+        <div class="form-row">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" placeholder="Tu nombre">
+          </div>
+          <div>
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" type="tel" placeholder="55 0000 0000">
+          </div>
+        </div>
+        <div>
+          <label for="servicio">Servicio de interés</label>
+          <select id="servicio">
+            <option>Pisos</option>
+            <option>Pintura y texturizados</option>
+            <option>Yesos y plafones</option>
+            <option>Carpintería</option>
+            <option>Puertas y ventanas</option>
+            <option>Impermeabilización</option>
+            <option>Adhesivos e intermedios</option>
+            <option>No estoy seguro</option>
+          </select>
+        </div>
+        <div>
+          <label for="detalle">Cuéntanos del espacio</label>
+          <textarea id="detalle" placeholder="Tipo de espacio, metros aproximados, fecha en la que te gustaría empezar..."></textarea>
+        </div>
+        <button class="form-submit" type="submit">Enviar solicitud</button>
+        <p class="form-note">Al enviar, aceptas que te contactemos para dar seguimiento a tu cotización.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Obra Fina. Todos los derechos reservados.</span>
+    <span>Aviso de privacidad · Términos de servicio</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const box = document.getElementById('compareBox');
+    const clip = document.getElementById('compareClip');
+    const handle = document.getElementById('compareHandle');
+    let dragging = false;
+    function setPos(clientX){
+      const rect = box.getBoundingClientRect();
+      let x = clientX - rect.left;
+      x = Math.max(0, Math.min(rect.width, x));
+      const pct = (x / rect.width) * 100;
+      clip.style.width = pct + '%';
+      handle.style.left = pct + '%';
+    }
+    box.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+    window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
+    window.addEventListener('mouseup', () => dragging = false);
+    box.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
+    box.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
+    window.addEventListener('touchend', () => dragging = false);
+  })();
+</script>
+</body>
+</html>

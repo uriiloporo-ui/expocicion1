@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HENKEL — Adhesivos e Intermedios Químicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --graphite:#1B2023;
+    --graphite-2:#262D31;
+    --steel:#33495E;
+    --concrete:#EAE6DD;
+    --concrete-2:#DDD7C9;
+    --paper:#FAF8F3;
+    --ink:#20262A;
+    --ink-soft:#4B5359;
+    --orange:#E0552C;
+    --orange-dark:#B8431F;
+    --teal:#3E7C74;
+    --line:rgba(27,32,35,0.14);
+    --line-dark:rgba(250,248,243,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    color:var(--graphite);
+    line-height:1.12;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+  ::selection{background:var(--orange);color:#fff;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(250,248,243,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:0 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;letter-spacing:0.01em;}
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  nav.links{display:flex;gap:26px;}
+  nav.links a{
+    font-size:0.9rem;font-weight:500;text-decoration:none;color:var(--ink-soft);
+    padding:6px 2px;border-bottom:2px solid transparent;transition:color .15s, border-color .15s;
+  }
+  nav.links a:hover{color:var(--orange-dark);border-bottom-color:var(--orange);}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{width:22px;height:2px;background:var(--ink);display:block;}
+  #navtoggle{display:none;}
+
+  @media (max-width:840px){
+    nav.links{
+      position:absolute;top:64px;left:0;right:0;
+      background:var(--paper);
+      flex-direction:column;gap:0;
+      border-bottom:1px solid var(--line);
+      max-height:0;overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    nav.links a{padding:14px 28px;border-bottom:1px solid var(--line);width:100%;}
+    #navtoggle:checked ~ nav.links{max-height:520px;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--graphite);
+    color:var(--paper);
+    overflow:hidden;
+    padding:90px 0 70px;
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .kicker-line{
+    display:flex;align-items:center;gap:12px;
+    font-family:'IBM Plex Mono';font-size:0.8rem;color:var(--orange);
+    margin-bottom:22px;
+  }
+  .kicker-line .rule{height:1px;width:44px;background:var(--orange);}
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.5rem);
+    color:var(--paper);
+    max-width:11ch;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 span{color:var(--orange);}
+  .hero p.sub{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:1.15rem;
+    color:#C9CDCF;
+  }
+  .hero-meta{
+    display:flex;gap:34px;flex-wrap:wrap;
+    margin-top:46px;padding-top:26px;
+    border-top:1px solid var(--line-dark);
+  }
+  .hero-meta div{font-family:'IBM Plex Mono';font-size:0.78rem;color:#9AA1A5;}
+  .hero-meta strong{display:block;font-family:'Space Grotesk';font-size:1rem;color:var(--paper);font-weight:600;margin-bottom:3px;}
+  .hero-bg{
+    position:absolute;inset:0;opacity:0.5;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  .section{padding:84px 0;}
+  .section.alt{background:var(--concrete);}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    margin-bottom:44px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:22px;
+  }
+  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);}
+  .section-num{font-family:'IBM Plex Mono';font-size:0.85rem;color:var(--orange-dark);white-space:nowrap;}
+  .lede{max-width:70ch;font-size:1.06rem;color:var(--ink-soft);margin-bottom:36px;}
+
+  /* ---------- QUE ES HENKEL ---------- */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{margin:0 0 16px;color:var(--ink-soft);font-size:1.02rem;}
+  .stat-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);background:var(--paper);}
+  .stat-list .stat{padding:20px 22px;border-bottom:1px solid var(--line);}
+  .stat-list .stat:last-child{border-bottom:none;}
+  .stat .num{font-family:'Space Grotesk';font-weight:700;font-size:1.6rem;color:var(--orange-dark);}
+  .stat .label{font-size:0.86rem;color:var(--ink-soft);margin-top:4px;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- ADHESIVOS CARDS ---------- */
+  .card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media (max-width:760px){.card-grid{grid-template-columns:1fr;}}
+  .a-card{
+    background:var(--paper);border:1px solid var(--line);
+    padding:26px 26px 8px;
+  }
+  .a-card .head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .a-card .head .icon{
+    width:44px;height:44px;flex-shrink:0;border-radius:50%;
+    background:var(--graphite);display:flex;align-items:center;justify-content:center;
+  }
+  .a-card .head .icon svg{width:22px;height:22px;stroke:var(--orange);}
+  .a-card h3{font-size:1.2rem;}
+  .a-card .tag{font-family:'IBM Plex Mono';font-size:0.72rem;color:var(--teal);text-transform:none;}
+  .a-card p{color:var(--ink-soft);font-size:0.95rem;margin:0 0 12px;}
+  .a-card dl{margin:0;font-size:0.9rem;}
+  .a-card dt{font-family:'IBM Plex Mono';font-size:0.72rem;color:var(--ink-soft);margin-top:10px;}
+  .a-card dd{margin:2px 0 0;color:var(--ink);}
+  details.more{margin:14px -26px 0;border-top:1px solid var(--line);}
+  details.more summary{
+    list-style:none;cursor:pointer;padding:14px 26px;
+    font-family:'IBM Plex Mono';font-size:0.78rem;color:var(--orange-dark);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  details.more summary::-webkit-details-marker{display:none;}
+  details.more summary::after{content:"+";font-size:1rem;}
+  details.more[open] summary::after{content:"–";}
+  details.more .more-body{padding:0 26px 20px;font-size:0.9rem;color:var(--ink-soft);}
+
+  /* ---------- INTERMEDIOS ---------- */
+  .flow{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-top:44px;
+  }
+  .flow .fstep{
+    background:var(--graphite);color:var(--paper);
+    padding:26px 20px;position:relative;border-right:1px solid rgba(255,255,255,0.12);
+  }
+  .flow .fstep:last-child{border-right:none;background:var(--orange-dark);}
+  .flow .fstep .fnum{font-family:'IBM Plex Mono';font-size:0.75rem;color:var(--orange);}
+  .flow .fstep:last-child .fnum{color:#FFD9C7;}
+  .flow .fstep h4{color:var(--paper);font-size:1rem;margin:10px 0 8px;}
+  .flow .fstep p{font-size:0.85rem;color:#C9CDCF;margin:0;}
+  .flow .fstep:last-child p{color:#FBE3D5;}
+  @media (max-width:800px){
+    .flow{grid-template-columns:1fr;}
+    .flow .fstep{border-right:none;border-bottom:1px solid rgba(255,255,255,0.12);}
+  }
+  .intermedios-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .intermedios-body p{color:var(--ink-soft);}
+  @media (max-width:800px){.intermedios-body{grid-template-columns:1fr;}}
+  .chem-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .chem-list li{
+    display:flex;gap:12px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);font-size:0.92rem;
+  }
+  .chem-list li b{font-family:'Space Grotesk';color:var(--teal);min-width:118px;display:inline-block;}
+
+  /* ---------- FICHA TECNICA ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
+  .tab-btn{
+    font-family:'IBM Plex Mono';font-size:0.82rem;
+    background:var(--paper);border:1px solid var(--line);
+    padding:10px 18px;cursor:pointer;color:var(--ink-soft);
+  }
+  .tab-btn.active{background:var(--graphite);color:var(--paper);border-color:var(--graphite);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+  .datasheet{
+    background:var(--paper);border:1px solid var(--line);
+  }
+  .ds-top{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;
+    padding:24px 26px;border-bottom:1px solid var(--line);background:var(--graphite);color:var(--paper);
+  }
+  .ds-top h3{color:var(--paper);font-size:1.35rem;}
+  .ds-top .maker{font-family:'IBM Plex Mono';font-size:0.78rem;color:var(--orange);margin-top:6px;}
+  .ds-top .badge{
+    font-family:'IBM Plex Mono';font-size:0.72rem;border:1px solid var(--line-dark);
+    padding:6px 12px;color:#C9CDCF;white-space:nowrap;
+  }
+  table.ds-table{width:100%;border-collapse:collapse;}
+  table.ds-table tr{border-bottom:1px solid var(--line);}
+  table.ds-table tr:last-child{border-bottom:none;}
+  table.ds-table th{
+    text-align:left;font-family:'IBM Plex Mono';font-weight:500;font-size:0.78rem;
+    color:var(--ink-soft);padding:14px 26px;width:230px;vertical-align:top;
+    background:var(--concrete);
+  }
+  table.ds-table td{padding:14px 26px;font-size:0.92rem;vertical-align:top;}
+  .note-flag{color:var(--orange-dark);font-style:italic;}
+  .ds-foot{
+    padding:16px 26px;font-size:0.82rem;color:var(--ink-soft);border-top:1px solid var(--line);
+    background:var(--concrete);
+  }
+  .callout{
+    border:1px solid var(--orange);background:#FBEAE2;color:var(--orange-dark);
+    padding:16px 20px;font-size:0.92rem;margin-bottom:30px;
+  }
+
+  /* ---------- FORMATOS ---------- */
+  .format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end;}
+  @media (max-width:760px){.format-grid{grid-template-columns:1fr;}}
+  .f-card{background:var(--paper);border:1px solid var(--line);padding:26px;text-align:left;}
+  .f-card .swatch{background:var(--concrete-2);display:flex;align-items:flex-end;justify-content:center;margin-bottom:18px;}
+  .f-card.small .swatch{height:54px;}
+  .f-card.small .swatch .box{width:34px;height:34px;background:var(--teal);}
+  .f-card.medium .swatch{height:54px;}
+  .f-card.medium .swatch .box{width:60px;height:44px;background:var(--steel);}
+  .f-card.large .swatch{height:54px;}
+  .f-card.large .swatch .box{width:96px;height:54px;background:var(--orange-dark);}
+  .f-card h4{font-size:1.05rem;margin-bottom:6px;}
+  .f-card p{color:var(--ink-soft);font-size:0.9rem;margin:0 0 12px;}
+  .f-card ul{margin:0;padding-left:18px;font-size:0.88rem;color:var(--ink);}
+  .f-card ul li{margin-bottom:4px;}
+
+  /* ---------- EMPRESA ---------- */
+  .company{
+    background:var(--graphite);color:var(--paper);
+    padding:70px 0;
+  }
+  .company .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;}
+  @media (max-width:800px){.company .wrap{grid-template-columns:1fr;}}
+  .company h2{color:var(--paper);}
+  .company .lede{color:#C9CDCF;}
+  .info-table{width:100%;border-collapse:collapse;}
+  .info-table tr{border-bottom:1px solid var(--line-dark);}
+  .info-table th{
+    text-align:left;font-family:'IBM Plex Mono';font-size:0.78rem;color:#9AA1A5;
+    padding:16px 0;width:180px;font-weight:500;vertical-align:top;
+  }
+  .info-table td{padding:16px 0;color:var(--paper);font-size:0.95rem;}
+
+  /* ---------- FUENTES ---------- */
+  .sources{padding:60px 0 40px;}
+  .sources ol{margin:0;padding-left:22px;}
+  .sources li{margin-bottom:12px;font-size:0.92rem;color:var(--ink-soft);}
+  .sources a{color:var(--teal);text-decoration:underline;text-decoration-color:var(--line);word-break:break-word;}
+  footer{
+    border-top:1px solid var(--line);padding:26px 0;text-align:center;
+    font-size:0.8rem;color:var(--ink-soft);font-family:'IBM Plex Mono';
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--orange);color:#fff;border:none;
+    padding:13px 24px;font-family:'IBM Plex Mono';font-size:0.85rem;
+    cursor:pointer;text-decoration:none;transition:background .15s;
+  }
+  .btn:hover{background:var(--orange-dark);}
+  .btn.ghost{background:transparent;border:1px solid var(--line-dark);color:var(--paper);}
+  .btn.ghost:hover{background:rgba(255,255,255,0.08);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6M10 3v5.2L5.5 16A2 2 0 0 0 7.3 19h9.4a2 2 0 0 0 1.8-3l-4.5-7.8V3"/></svg>
+      HENKEL · Investigación
+    </div>
+    <input type="checkbox" id="navtoggle">
+    <label class="burger" for="navtoggle"><span></span><span></span><span></span></label>
+    <nav class="links">
+       <a href="general.html">general</a>
+      <a href="#que-es">Qué es Henkel</a>
+      <a href="#adhesivos">Adhesivos</a>
+      <a href="#intermedios">Intermedios</a>
+      <a href="#ficha">Ficha técnica</a>
+      <a href="#formatos">Formatos</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#fuentes">Fuentes</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="hero-bg" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+        <path d="M46 0H0V46" fill="none" stroke="#33393D" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="620" fill="url(#grid)"/>
+    <g stroke="#3A4247" stroke-width="1.4" fill="none" opacity="0.9">
+      <polygon points="900,90 950,120 950,180 900,210 850,180 850,120"/>
+      <polygon points="990,150 1040,180 1040,240 990,270 940,240 940,180"/>
+      <polygon points="820,150 870,180 870,240 820,270 770,240 770,180"/>
+      <polygon points="900,210 950,240 950,300 900,330 850,300 850,240"/>
+    </g>
+    <g stroke="#E0552C" stroke-width="1.6" fill="none" opacity="0.55">
+      <rect x="60" y="420" width="70" height="34"/>
+      <rect x="140" y="420" width="70" height="34"/>
+      <rect x="100" y="454" width="70" height="34"/>
+      <rect x="180" y="454" width="70" height="34"/>
+      <rect x="60" y="488" width="70" height="34"/>
+      <rect x="140" y="488" width="70" height="34"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div class="kicker-line"><span class="rule"></span> INVESTIGACIÓN ESCOLAR · QUÍMICA INDUSTRIAL Y CONSTRUCCIÓN</div>
+    <h1>HENKEL: <span>Adhesivos</span> e Intermedios Químicos</h1>
+    <p class="sub">Investigación sobre productos, aplicaciones y características técnicas de una de las compañías líderes del mundo en adhesivos, selladores y recubrimientos funcionales.</p>
+    <div class="hero-meta">
+      <div><strong>Adhesive Technologies</strong>Unidad de negocio de Henkel AG</div>
+      <div><strong>Marcas citadas</strong>Pattex · Loctite · Technomelt · Ceresit</div>
+      <div><strong>Sector</strong>Química industrial y construcción</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUE ES HENKEL ============ -->
+<section class="section" id="que-es">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>¿Qué es Henkel?</h2>
+      <span class="section-num mono">Sección 01</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Henkel es una empresa alemana con sede en Düsseldorf, cuya unidad de negocio <strong>Henkel Adhesive Technologies</strong> es reconocida como el fabricante líder a nivel mundial de adhesivos, selladores y recubrimientos funcionales, tanto para clientes industriales como para consumidores y profesionales de la construcción.</p>
+        <p>Esta división trabaja en estrecha colaboración con clientes de más de 800 segmentos industriales y organiza su portafolio en marcas tecnológicas especializadas —entre ellas <strong>Loctite</strong>, <strong>Technomelt</strong>, <strong>Bonderite</strong>, <strong>Teroson</strong>, <strong>Pattex</strong> y <strong>Ceresit</strong>— que cubren desde el pegado industrial de precisión hasta los sistemas de construcción y bricolaje.</p>
+        <p>Dentro de la industria de los adhesivos, Henkel es importante porque desarrolla soluciones de unión que sustituyen o complementan métodos tradicionales de fijación (clavos, tornillos, soldadura), aportando ligereza, resistencia, aislamiento y durabilidad en sectores como la automoción, el embalaje, la electrónica y, de forma central para esta investigación, la construcción.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat"><div class="num">+100</div><div class="label">años de trayectoria en innovación de adhesivos</div></div>
+        <div class="stat"><div class="num">+800</div><div class="label">segmentos industriales atendidos por Adhesive Technologies</div></div>
+        <div class="stat"><div class="num">3</div><div class="label">áreas de negocio: movilidad y electrónica; empaque y consumo; construcción y profesionales</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADHESIVOS ============ -->
+<section class="section alt" id="adhesivos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Adhesivos que fabrica</h2>
+      <span class="section-num mono">Sección 02</span>
+    </div>
+    <p class="lede">Henkel organiza su oferta de adhesivos en marcas especializadas. A continuación se describen cuatro familias representativas, con su uso principal, los materiales que pueden unir y sus aplicaciones típicas en construcción o industria.</p>
+
+    <div class="card-grid">
+
+      <article class="a-card">
+        <div class="head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l6-6M14 4l6 6-8 8-6-6z"/></svg></div>
+          <div><h3>Pattex</h3><div class="tag">Adhesivos de montaje y bricolaje</div></div>
+        </div>
+        <p><strong>Uso principal:</strong> fijación y montaje sin clavos ni tornillos, para trabajos de bricolaje, reparación y construcción ligera en interior y exterior.</p>
+        <dl>
+          <dt>Materiales que puede unir</dt>
+          <dd>Madera, ladrillo, hormigón, cerámica, metales, vidrio, corcho, PVC rígido y poliestireno expandido (no apto para polietileno, polipropileno ni teflón).</dd>
+          <dt>Aplicaciones en construcción</dt>
+          <dd>Fijación de rodapiés, zócalos, molduras, paneles decorativos, placas de yeso, encimeras y perfiles.</dd>
+        </dl>
+        <details class="more">
+          <summary>Ver más detalle</summary>
+          <div class="more-body">La gama "No Más Clavos" utiliza tecnología de polímero (FlexTec) que ofrece agarre inicial inmediato y, según ficha, resultados extra-fuertes de hasta 60 kg/cm² (norma DIN EN 205). Existen variantes para interior y para interior/exterior; el valor exacto de resistencia y el rango de temperatura de trabajo dependen de cada referencia comercial.</div>
+        </details>
+      </article>
+
+      <article class="a-card">
+        <div class="head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <div><h3>Loctite</h3><div class="tag">Adhesivos industriales y estructurales</div></div>
+        </div>
+        <p><strong>Uso principal:</strong> pegado de precisión y adhesión estructural en aplicaciones industriales, automotrices y electrónicas.</p>
+        <dl>
+          <dt>Materiales que puede unir</dt>
+          <dd>Metales, plásticos, cauchos, vidrio, cerámica y mampostería, según la tecnología química del producto específico.</dd>
+          <dt>Aplicaciones en industria</dt>
+          <dd>Fijación de roscas y rodamientos (anaeróbicos), ensamblaje rápido (cianoacrilatos) y uniones estructurales de alta resistencia (epoxi bicomponente).</dd>
+        </dl>
+        <details class="more">
+          <summary>Ver más detalle</summary>
+          <div class="more-body">Incluye varias tecnologías: <em>anaeróbicos</em> para fijación de roscas sin necesidad de aire; <em>cianoacrilatos</em> (p. ej. LOCTITE 401) de curado casi instantáneo y buena resistencia a la temperatura hasta cerca de 120 °C; y <em>epoxi bicomponentes</em> (p. ej. LOCTITE EA 9497) capaces de resistir hasta 200 °C en aplicaciones que requieren conductividad térmica. Cada familia tiene su propio método de curado y limitaciones de sustrato.</div>
+        </details>
+      </article>
+
+      <article class="a-card">
+        <div class="head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+          <div><h3>Technomelt</h3><div class="tag">Adhesivos termofusibles (hot melt)</div></div>
+        </div>
+        <p><strong>Uso principal:</strong> pegado industrial de alta velocidad mediante fusión por calor, sin disolventes.</p>
+        <dl>
+          <dt>Materiales que puede unir</dt>
+          <dd>Cartón, papel, films plásticos, textiles no tejidos y componentes de madera o plástico en líneas de ensamblaje.</dd>
+          <dt>Aplicaciones en industria</dt>
+          <dd>Cierre y formación de cajas de cartón, empaque flexible, ensamblaje de productos de consumo y encuadernación.</dd>
+        </dl>
+        <details class="more">
+          <summary>Ver más detalle</summary>
+          <div class="more-body">Son adhesivos termoplásticos que se aplican en estado fundido y solidifican al enfriarse, lo que permite un pegado casi instantáneo en líneas de producción automatizadas. Forman parte de los cinco clústeres tecnológicos industriales de Henkel Adhesive Technologies, junto con Loctite, Bonderite, Teroson y Aquence.</div>
+        </details>
+      </article>
+
+      <article class="a-card">
+        <div class="head">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="7" height="4"/><rect x="14" y="10" width="7" height="4"/><rect x="8" y="15" width="7" height="4"/><rect x="8" y="5" width="7" height="4"/></svg></div>
+          <div><h3>Ceresit</h3><div class="tag">Químicos para la construcción</div></div>
+        </div>
+        <p><strong>Uso principal:</strong> pegado de cerámica, sistemas de aislamiento térmico y nivelación de pisos en obra.</p>
+        <dl>
+          <dt>Materiales que puede unir</dt>
+          <dd>Baldosas cerámicas, gres porcelánico, piedra natural, mosaicos y paneles de aislamiento térmico, sobre sustratos de concreto, mortero o yeso.</dd>
+          <dt>Aplicaciones en construcción</dt>
+          <dd>Colocación de pisos y recubrimientos, sistemas de aislamiento térmico exterior (fachadas), niveladores autonivelantes e imprimaciones.</dd>
+        </dl>
+        <details class="more">
+          <summary>Ver más detalle</summary>
+          <div class="more-body">Es la marca de Henkel con más tradición en química de la construcción y se comercializa en más de 60 países. Sus adhesivos para baldosas se identifican por familias (por ejemplo, la serie "SM" para mezclas de fijación cerámica), cada una con requisitos distintos de sustrato, humedad y resistencia a heladas.</div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERMEDIOS ============ -->
+<section class="section" id="intermedios">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Intermedios químicos</h2>
+      <span class="section-num mono">Sección 03</span>
+    </div>
+    <div class="intermedios-body">
+      <div>
+        <p>Un <strong>intermedio químico</strong> es una sustancia que se produce durante una reacción química y que, en lugar de ser el producto final, se utiliza como materia prima para fabricar otro compuesto. En la industria de los adhesivos, los intermedios químicos —junto con resinas y polímeros— son los bloques de construcción con los que se formulan los productos terminados.</p>
+        <p>Las resinas (por ejemplo, epóxicas, de poliuretano, acrílicas o fenólicas) aportan el poder adhesivo y la resistencia mecánica; los polímeros determinan si el producto será rígido o flexible, y si curará químicamente (adhesivos reactivos, como los epoxi bicomponentes) o simplemente solidificará al enfriarse o evaporarse un disolvente (adhesivos termoplásticos, como los hot melt).</p>
+      </div>
+      <ul class="chem-list">
+        <li><b>Resinas epoxi</b> Poliéteres con grupos epóxido; se combinan con un endurecedor para formar uniones estructurales de alta resistencia.</li>
+        <li><b>Poliuretanos</b> Aportan flexibilidad, resistencia a la abrasión y buen comportamiento frente al agua y la intemperie.</li>
+        <li><b>Resinas acrílicas</b> Derivadas de ácidos acrílico y metacrílico; permiten formular adhesivos de secado rápido y buena resistencia a la luz UV.</li>
+        <li><b>Taquificantes</b> Resinas derivadas del petróleo o de la colofonia que aumentan el "tack" o agarre inicial del adhesivo.</li>
+      </ul>
+    </div>
+
+    <div class="flow">
+      <div class="fstep"><div class="fnum">01</div><h4>Materia prima química</h4><p>Compuestos base como hidrocarburos, óxido de etileno o ácidos orgánicos.</p></div>
+      <div class="fstep"><div class="fnum">02</div><h4>Intermedios químicos</h4><p>Moléculas de síntesis (resinas precursoras, monómeros) obtenidas a partir de la materia prima.</p></div>
+      <div class="fstep"><div class="fnum">03</div><h4>Resinas y polímeros</h4><p>Formación de cadenas poliméricas: epoxi, poliuretano, acrílicos, EVA, entre otros.</p></div>
+      <div class="fstep"><div class="fnum">04</div><h4>Producto adhesivo</h4><p>Formulación final con aditivos, cargas y disolventes, lista para su aplicación.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FICHA TECNICA ============ -->
+<section class="section alt" id="ficha">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ficha técnica</h2>
+      <span class="section-num mono">Sección 04</span>
+    </div>
+    <div class="callout">Los valores de espesor, tiempo de secado y rendimiento <strong>varían según el producto específico, el sustrato y las condiciones ambientales</strong>. Donde no se cuenta con un dato verificado para la referencia exacta, se indica expresamente y se recomienda consultar la ficha técnica oficial (TDS) de Henkel.</div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="p1">Pattex — No Más Clavos</button>
+      <button class="tab-btn" data-tab="p2">Loctite 401</button>
+      <button class="tab-btn" data-tab="p3">Ceresit — línea SM (cerámica)</button>
+    </div>
+
+    <div class="tab-panel active" id="p1">
+      <div class="datasheet">
+        <div class="ds-top">
+          <div><h3>Pattex "No Más Clavos"</h3><div class="maker">Fabricante: Henkel</div></div>
+          <div class="badge">Adhesivo de montaje</div>
+        </div>
+        <table class="ds-table">
+          <tr><th>Tipo de adhesivo</th><td>Adhesivo de montaje extra-fuerte, sin disolventes.</td></tr>
+          <tr><th>Composición / base química</th><td>Base polímero (tecnología FlexTec de Henkel).</td></tr>
+          <tr><th>Presentación</th><td>Cartucho o tubo; formatos comerciales de 100 g, 150 g y 446 g, entre otros.</td></tr>
+          <tr><th>Método de aplicación</th><td>Manual, con pistola de calafateo (para cartucho) o directamente desde el tubo, en cordones.</td></tr>
+          <tr><th>Tipo de boquilla o herramienta</th><td>Boquilla de corte en pico, recortada según el ancho de cordón deseado.</td></tr>
+          <tr><th>Espesor recomendado</th><td class="note-flag">Depende de la irregularidad de la superficie; el producto permite rellenar pequeños huecos. Consultar ficha técnica oficial para el espesor máximo de junta.</td></tr>
+          <tr><th>Tiempo de secado</th><td>Agarre inicial inmediato (0 segundos); <span class="note-flag">el tiempo de curado total varía según humedad y temperatura — consultar ficha técnica oficial.</span></td></tr>
+          <tr><th>Rendimiento</th><td class="note-flag">Varía según el diámetro del cordón aplicado y el formato del envase — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Usos principales</th><td>Fijación de rodapiés, zócalos, frisos, perfiles, encimeras, molduras, paneles decorativos y placas de yeso.</td></tr>
+          <tr><th>Recomendaciones de seguridad</th><td>No apto para polietileno, polipropileno ni teflón; no recomendado para fijar espejos. Usar en zonas ventiladas y consultar la Hoja de Datos de Seguridad (SDS) antes de su manipulación.</td></tr>
+        </table>
+        <div class="ds-foot">Resistencia declarada de hasta 60 kg/cm² según norma DIN EN 205 (dato de ficha comercial). Los datos exactos por formato deben verificarse en la ficha técnica (TDS) oficial de Henkel/Pattex.</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p2">
+      <div class="datasheet">
+        <div class="ds-top">
+          <div><h3>LOCTITE® 401</h3><div class="maker">Fabricante: Henkel</div></div>
+          <div class="badge">Adhesivo instantáneo</div>
+        </div>
+        <table class="ds-table">
+          <tr><th>Tipo de adhesivo</th><td>Adhesivo instantáneo monocomponente, de uso general y multisustrato.</td></tr>
+          <tr><th>Composición / base química</th><td>Cianoacrilato.</td></tr>
+          <tr><th>Presentación</th><td class="note-flag">Envases pequeños tipo frasco o gotero; el tamaño exacto depende de la referencia comercial — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Método de aplicación</th><td>Aplicación directa en gotas o cordón fino sobre una de las superficies, con presión posterior para unir.</td></tr>
+          <tr><th>Tipo de boquilla o herramienta</th><td>Boquilla dosificadora fina integrada en el envase.</td></tr>
+          <tr><th>Espesor recomendado</th><td class="note-flag">Diseñado para uniones ajustadas, con junta de unión mínima — consultar ficha técnica oficial para el valor exacto.</td></tr>
+          <tr><th>Tiempo de secado</th><td>Fijación casi instantánea (segundos); curado completo en minutos u horas según el sustrato.</td></tr>
+          <tr><th>Rendimiento</th><td class="note-flag">Depende del sustrato y del espesor de la capa aplicada — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Usos principales</th><td>Ensamblaje rápido de metales, maderas y plásticos con alta resistencia a la torsión y al corte; resiste temperaturas de hasta aproximadamente 120 °C.</td></tr>
+          <tr><th>Recomendaciones de seguridad</th><td>Evitar el contacto con la piel y los ojos (adhesión instantánea a tejidos); usar en áreas ventiladas y revisar la Hoja de Datos de Seguridad (SDS) antes de usar.</td></tr>
+        </table>
+        <div class="ds-foot">Para pegado específico de plásticos existen variantes como LOCTITE 406 y LOCTITE 454; los datos numéricos de cada una difieren y deben confirmarse en su ficha técnica oficial.</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="p3">
+      <div class="datasheet">
+        <div class="ds-top">
+          <div><h3>Ceresit — línea SM (adhesivos para cerámica)</h3><div class="maker">Fabricante: Henkel</div></div>
+          <div class="badge">Mortero adhesivo</div>
+        </div>
+        <table class="ds-table">
+          <tr><th>Tipo de adhesivo</th><td>Mortero adhesivo cementicio para colocación de baldosas cerámicas y gres porcelánico.</td></tr>
+          <tr><th>Composición / base química</th><td>Cemento hidráulico, arenas seleccionadas y aditivos poliméricos.</td></tr>
+          <tr><th>Presentación</th><td class="note-flag">Sacos de polvo; el peso exacto varía según el código de producto de la gama SM — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Método de aplicación</th><td>Mezcla con agua hasta formar pasta y aplicación con llana o espátula dentada.</td></tr>
+          <tr><th>Tipo de boquilla o herramienta</th><td>Llana dentada (peine); el tamaño del diente depende del formato de la pieza a colocar.</td></tr>
+          <tr><th>Espesor recomendado</th><td class="note-flag">Depende del tamaño de la pieza y del diente de llana utilizado — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Tiempo de secado</th><td>Tiempo de corrección de la pieza de referencia ≈ 25 minutos; vida útil de la mezcla ≈ 2 horas (valores de referencia generales de la gama; <span class="note-flag">confirmar en la ficha técnica del código específico</span>).</td></tr>
+          <tr><th>Rendimiento</th><td class="note-flag">Se expresa en kg por m² según espesor de capa — consultar ficha técnica oficial.</td></tr>
+          <tr><th>Usos principales</th><td>Colocación de baldosas, mosaicos y gres porcelánico en interior y exterior; algunas variantes son aptas para zonas húmedas.</td></tr>
+          <tr><th>Recomendaciones de seguridad</th><td>Producto en polvo con cemento: evitar inhalación de polvo y contacto prolongado con la piel (riesgo de irritación por alcalinidad); usar protección respiratoria y ocular, y consultar la Hoja de Datos de Seguridad (SDS).</td></tr>
+        </table>
+        <div class="ds-foot">Datos generales de referencia de la gama Ceresit SM (adhesión ≈ 0.8 MPa, resistencia a heladas ≈ 100 ciclos, rango de temperatura de trabajo +5 °C a +30 °C). Cada código de producto (por ejemplo SM 110, SM 117) tiene su propia ficha técnica con valores específicos.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FORMATOS ============ -->
+<section class="section" id="formatos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Formatos y presentaciones</h2>
+      <span class="section-num mono">Sección 05</span>
+    </div>
+    <p class="lede">Henkel comercializa sus adhesivos en distintos tamaños según el tipo de usuario (consumidor, profesional o industrial). El tamaño exacto de cada presentación depende del producto y del país; a continuación se muestra una clasificación general con ejemplos comerciales.</p>
+    <div class="format-grid">
+      <div class="f-card small">
+        <div class="swatch"><div class="box"></div></div>
+        <h4>Formato pequeño</h4>
+        <p>Pensado para reparaciones puntuales o uso doméstico ocasional.</p>
+        <ul>
+          <li>Frascos o góteros de adhesivo instantáneo (Loctite), de pocos gramos.</li>
+          <li>Barras o tubos pequeños de pegamento de uso escolar/oficina (Pritt).</li>
+        </ul>
+      </div>
+      <div class="f-card medium">
+        <div class="swatch"><div class="box"></div></div>
+        <h4>Formato mediano</h4>
+        <p>Orientado al bricolaje y a reparaciones dentro del hogar.</p>
+        <ul>
+          <li>Tubos de adhesivo de montaje Pattex (por ejemplo, 100–450 g).</li>
+          <li>Envases medianos de adhesivos estructurales bicomponentes (Loctite EA).</li>
+        </ul>
+      </div>
+      <div class="f-card large">
+        <div class="swatch"><div class="box"></div></div>
+        <h4>Formato grande</h4>
+        <p>Dirigido a obra, industria y aplicaciones profesionales de gran volumen.</p>
+        <ul>
+          <li>Cartuchos y salchichas de gran calibre para pistolas de calafateo profesionales.</li>
+          <li>Sacos de mortero adhesivo Ceresit y tambores industriales de adhesivo hot melt (Technomelt).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPRESA ============ -->
+<section class="company" id="empresa">
+  <div class="wrap">
+    <div>
+      <h2>La empresa</h2>
+      <p class="lede">Información general de Henkel como compañía y de la unidad de negocio protagonista de esta investigación.</p>
+    </div>
+    <table class="info-table">
+      <tr><th>Nombre</th><td>Henkel AG &amp; Co. KGaA</td></tr>
+      <tr><th>Área</th><td>Adhesive Technologies (adhesivos, selladores y recubrimientos funcionales)</td></tr>
+      <tr><th>Industria</th><td>Productos químicos y adhesivos</td></tr>
+      <tr><th>Sede</th><td>Düsseldorf, Alemania</td></tr>
+      <tr><th>Aplicaciones</th><td>Construcción, industria (automotriz, electrónica, embalaje) y productos de consumo y bricolaje</td></tr>
+      <tr><th>Algunas marcas</th><td>Pattex, Loctite, Technomelt, Ceresit, Teroson, Bonderite, Pritt</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ FUENTES ============ -->
+<section class="sources" id="fuentes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Fuentes consultadas</h2>
+      <span class="section-num mono">Sección 06</span>
+    </div>
+    <p class="lede">Se dio prioridad a la información oficial de Henkel y a las fichas técnicas y páginas de producto de sus marcas. Para datos técnicos exactos de un producto en particular, se recomienda siempre consultar la ficha técnica (TDS) y la hoja de seguridad (SDS) oficiales vigentes.</p>
+    <ol>
+      <li>Henkel Adhesive Technologies — Inicio y Compañía. <a href="https://next.henkel-adhesives.com/es/es.html" target="_blank" rel="noopener">next.henkel-adhesives.com</a></li>
+      <li>Henkel Adhesive Technologies (Norteamérica) — Sobre nosotros. <a href="https://www.henkel-northamerica.com/brands-and-businesses/adhesive-technologies/about-us" target="_blank" rel="noopener">henkel-northamerica.com</a></li>
+      <li>Henkel — Nuestros negocios. <a href="https://www.henkel.com/our-businesses" target="_blank" rel="noopener">henkel.com</a></li>
+      <li>Henkel México — Marcas y negocios: Adhesive Technologies y Ceresit. <a href="https://www.henkel.mx/marcas-y-negocios/adhesive-technologies" target="_blank" rel="noopener">henkel.mx</a></li>
+      <li>Pattex — Ficha de producto "No Más Clavos" y gama Construir y ensamblar. <a href="https://www.pattex.es/productos/static-landingpages/no-mas-clavos-para-todo.html" target="_blank" rel="noopener">pattex.es</a></li>
+      <li>LOCTITE® 401 y LOCTITE® EA 9497 — Páginas oficiales de producto. <a href="https://next.henkel-adhesives.com/es/es/products/industrial-adhesives/central-pdp.html/loctite-4902/Loctite4902.html" target="_blank" rel="noopener">henkel-adhesives.com</a></li>
+      <li>Henkel — Pegamento resistente a altas temperaturas (artículo técnico). <a href="https://next.henkel-adhesives.com/es/es/articles/pegamento-resistente-altas-temperaturas.html" target="_blank" rel="noopener">henkel-adhesives.com</a></li>
+      <li>Henkel — Catálogo Ceresit. <a href="https://dm.henkel-dam.com/is/content/henkel/Catalogo_Ceresit_MX" target="_blank" rel="noopener">dm.henkel-dam.com</a></li>
+      <li>Henkel Colombia — Ceresit, soluciones para la construcción. <a href="https://www.henkel.mx/marcas-y-negocios/ceresit-862592" target="_blank" rel="noopener">henkel.mx</a></li>
+      <li>PCC Group — Adhesivos: producción, materias primas y clasificación. <a href="https://www.products.pcc.eu/es/productos/mercados-y-aplicaciones/adhesivos-y-selladores/" target="_blank" rel="noopener">products.pcc.eu</a></li>
+      <li>Concepto de intermedio químico. <a href="https://es.shyzchem.com/chemical-intermediate/" target="_blank" rel="noopener">es.shyzchem.com</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer>Investigación escolar sin fines comerciales · Marcas y logotipos mencionados pertenecen a Henkel AG &amp; Co. KGaA</footer>
+
+<script>
+  document.querySelectorAll('nav.links a').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.getElementById('navtoggle').checked = false;
+    });
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

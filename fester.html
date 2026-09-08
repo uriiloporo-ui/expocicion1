@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FESTER | Adhesivos e Intermedios Químicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0e3a5d;
+      --navy-2: #16456d;
+      --accent: #d35400;
+      --accent-d: #b84400;
+      --bg: #f4f6f8;
+      --paper: #ffffff;
+      --ink: #1c2430;
+      --muted: #5d6773;
+      --line: #e2e6ea;
+      --shadow: 0 12px 32px rgba(14, 58, 93, .08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Manrope, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(244,246,248,.94), rgba(244,246,248,.96)),
+        repeating-linear-gradient(0deg, transparent 0 48px, rgba(14,58,93,.04) 48px 49px),
+        repeating-linear-gradient(90deg, transparent 0 48px, rgba(14,58,93,.04) 48px 49px),
+        #eef1f4;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 16px; }
+    .logo img { height: 38px; width: auto; }
+    .menu { display: flex; gap: 18px; font-size: 14px; color: #3a4654; }
+    .menu a:hover { color: var(--accent); }
+    .burger { display: none; border: 0; background: none; font-size: 26px; cursor: pointer; }
+
+    .hero { position: relative; min-height: 78vh; display: grid; place-items: end start; overflow: hidden; }
+    .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(8,28,46,.72), rgba(8,28,46,.28));
+    }
+    .hero-copy { position: relative; z-index: 1; color: #fff; padding: 88px 0 72px; }
+    .hero-copy h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.08; max-width: 16ch; margin-bottom: 14px;
+    }
+    .hero-copy p { max-width: 44ch; font-size: 18px; opacity: .92; margin-bottom: 26px; }
+    .btn {
+      display: inline-flex; align-items: center;
+      background: var(--accent); color: #fff; border-radius: 999px;
+      padding: 12px 22px; font-weight: 700; box-shadow: var(--shadow);
+      transition: .25s background, .25s transform;
+    }
+    .btn:hover { background: var(--accent-d); transform: translateY(-1px); }
+
+    section { padding: 88px 0; }
+    .kicker { letter-spacing: .14em; text-transform: uppercase; font-size: 12px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    h2 { font-family: Fraunces, Georgia, serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin-bottom: 14px; }
+    .lead { color: var(--muted); max-width: 70ch; margin-bottom: 22px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+    .photo { border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); background: #ddd; }
+    .photo img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+
+    .cards, .features, .packs, .icons { display: grid; gap: 16px; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .features, .icons { grid-template-columns: repeat(4, 1fr); }
+    .packs { grid-template-columns: repeat(3, 1fr); }
+    .card, .feature, .pack, .char {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; box-shadow: var(--shadow);
+    }
+    .card { overflow: hidden; display: flex; flex-direction: column; }
+    .card img { height: 200px; width: 100%; object-fit: cover; }
+    .card-body { padding: 20px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+    .tag { font-size: 12px; color: var(--accent); font-weight: 700; }
+    .card h3 { font-size: 20px; }
+    .card p { color: var(--muted); font-size: 14.5px; }
+    .card .btn { margin-top: auto; align-self: flex-start; padding: 8px 14px; font-size: 13px; }
+    .feature, .char { padding: 20px; }
+    .feature p, .char p { color: var(--muted); font-size: 14px; }
+    .pack img { height: 170px; width: 100%; object-fit: cover; border-radius: 18px 18px 0 0; }
+    .pack .inner { padding: 18px; }
+    .icon {
+      width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%;
+      display: grid; place-items: center; background: #edf3f8; color: var(--navy); font-weight: 700;
+    }
+    .char { text-align: center; }
+
+    .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { width: 34%; background: #f3f7fa; }
+    .note {
+      margin-top: 16px; font-size: 14px; color: var(--muted);
+      border-left: 3px solid var(--accent); background: #fff; padding: 12px 14px; border-radius: 0 10px 10px 0;
+    }
+    .sources a { color: var(--accent); }
+    .sources li { margin: 8px 0; color: var(--muted); }
+
+    footer { background: var(--navy); color: #d7e0e8; padding: 40px 0 24px; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .foot a { color: #c5d3de; font-size: 14px; }
+    footer small { display: block; margin-top: 16px; color: #8ea0ae; }
+
+    .reveal { opacity: 0; transform: translateY(16px); animation: up .7s ease forwards; }
+    .d1 { animation-delay: .12s; } .d2 { animation-delay: .22s; }
+    @keyframes up { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 900px) {
+      .menu { display: none; }
+      .menu.open {
+        display: flex; flex-direction: column; position: absolute; inset: 76px 0 auto;
+        background: #fff; padding: 16px 22px 22px; border-bottom: 1px solid var(--line);
+      }
+      .burger { display: block; }
+      .grid-2, .cards, .features, .packs, .icons { grid-template-columns: 1fr; }
+      section { padding: 64px 0; }
+    }
+    @media (min-width: 701px) and (max-width: 900px) {
+      .cards, .packs { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#inicio" aria-label="FESTER">
+        <img src="https://static.cdnlogo.com/logos/f/50/fester.svg" alt="Logotipo oficial de FESTER" />
+      </a>
+      <nav id="menu" class="menu">
+         <a href="general.html">general</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#productos">Productos</a>
+        <a href="#adhesivos">Adhesivos</a>
+        <a href="#ficha">Ficha técnica</a>
+        <a href="#formatos">Formatos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="burger" aria-label="Menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <img alt="Superficie de porcelanato y obra contemporánea" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1800&q=80" />
+    <div class="wrap hero-copy reveal">
+      <h1>FESTER: Soluciones para la construcción</h1>
+      <p>Adhesivos, productos químicos y soluciones especializadas para la construcción.</p>
+      <a class="btn" href="#productos">Conoce nuestros productos</a>
+    </div>
+  </section>
+
+  <section id="empresa">
+    <div class="wrap grid-2">
+      <div class="reveal">
+        <p class="kicker">¿Qué es FESTER?</p>
+        <h2>Marca mexicana de química para la obra</h2>
+        <p class="lead">FESTER es una marca mexicana de impermeabilizantes, selladores, adhesivos y sistemas de reparación para obras civiles, industriales y residenciales. El sitio oficial la describe como tecnología confiable para cada obra, con más de 75 años acompañando a profesionales de la construcción.</p>
+        <p class="lead">Nació en 1949, cuando Francisco Ferry y Alfredo Stern empezaron a importar productos químicos para la construcción. El nombre une las primeras letras de sus apellidos. El logotipo, pensado como una firma, expresaba el compromiso con la calidad.</p>
+        <p class="lead">Hoy FESTER pertenece a Henkel Capital, S.A. de C.V. (división Adhesive Technologies de Henkel). Ofrece un portafolio amplio —el fabricante habla de siete categorías— desde la cimentación hasta el techo.</p>
+      </div>
+      <figure class="photo reveal d2">
+        <img alt="Edificación y materiales de construcción" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" />
+      </figure>
+    </div>
+    <div class="wrap features" style="margin-top:28px">
+      <article class="feature"><strong>Innovación</strong><p>Desarrollo de sistemas acrílicos, cementosos, epóxicos y de poliuretano para clima y superficie distintos.</p></article>
+      <article class="feature"><strong>Calidad</strong><p>Referente en impermeabilización y adhesivos para concreto en el mercado mexicano, según la propia marca y Henkel.</p></article>
+      <article class="feature"><strong>Construcción</strong><p>Soluciones para fachadas, interiores, techos, cimentación y estructura.</p></article>
+      <article class="feature"><strong>Durabilidad</strong><p>Sistemas pensados para proteger la obra y alargar la vida útil de los inmuebles.</p></article>
+    </div>
+  </section>
+
+  <section id="productos">
+    <div class="wrap">
+      <p class="kicker">Portafolio</p>
+      <h2>Productos y adhesivos</h2>
+      <p class="lead">FESTER no se limita a un solo tipo de pegamento. Sus adhesivos más documentados son para concreto, mortero y acabados. También hay selladores e impermeabilizantes que participan en la instalación de recubrimientos. Las fotografías de contexto ilustran el tipo de obra; la imagen oficial de cada envase está en <a href="https://www.fester.com.mx" style="color:var(--accent)">fester.com.mx</a>.</p>
+      <div class="cards" id="adhesivos">
+        <article class="card reveal">
+          <img alt="Preparación de mortero y concreto" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Adhesivo acrílico</span>
+            <h3>FESTERBOND</h3>
+            <p>Adhesivo 100 % acrílico de usos múltiples: adherente, fortificador y sellador para concreto, morteros y superficies porosas.</p>
+            <p><strong>Uso principal:</strong> unir mortero nuevo a concreto viejo; preparar firmes antes de loseta cerámica, vinílica o asfáltica; sellar superficies porosas.</p>
+            <a class="btn" href="#ficha">Ver ficha técnica</a>
+          </div>
+        </article>
+        <article class="card reveal d1">
+          <img alt="Aplicación de sellador en junta" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Sellador</span>
+            <h3>FESTER SUPERSEAL P</h3>
+            <p>Sellador de poliuretano monocomponente, pastoso, que cura con la humedad del aire y forma un sello elástico e impermeable.</p>
+            <p><strong>Uso principal:</strong> juntas verticales y horizontales entre materiales porosos o lisos.</p>
+            <a class="btn" href="#venta">Ver ficha técnica</a>
+          </div>
+        </article>
+        <article class="card reveal d2">
+          <img alt="Azotea y recubrimiento protector" src="https://images.unsplash.com/photo-1487956382158-bb926046304a?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Impermeabilizante</span>
+            <h3>FESTER A / ACRITON</h3>
+            <p>Familia de impermeabilizantes acrílicos elastoméricos base agua para techos y azoteas. La línea Acriton incluye versiones con distinta garantía declarada por el fabricante.</p>
+            <p><strong>Uso principal:</strong> protección de losas y cubiertas; no sustituye a un adhesivo para pegar cerámica.</p>
+            <a class="btn" href="#fuentes">Ver ficha técnica</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Superficie de concreto" src="https://images.unsplash.com/photo-1517581178692-4fc0319dff67?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Cementoso</span>
+            <h3>FESTER CR-65</h3>
+            <p>Impermeabilizante cementoso en polvo. La ficha indica que, si después se colocan azulejos, debe hacerse en un plazo determinado o reforzar el adhesivo del azulejo con FESTERBOND.</p>
+            <p><strong>Uso principal:</strong> humedad de subsuelo, agua no presurizada y tanques de concreto, según dosificación de la ficha.</p>
+            <a class="btn" href="#rendimiento">Ver ficha técnica</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Reparación de elemento de concreto" src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Adhesivo epóxico</span>
+            <h3>FESTERPLAST</h3>
+            <p>Plaste epóxico amínico-poliamídico de dos componentes, 100 % sólidos. El fabricante lo describe también como adhesivo para placas de mármol, granito o metal.</p>
+            <p><strong>Uso principal:</strong> resanes en concreto o acero y pegado de piezas prefabricadas.</p>
+            <a class="btn" href="#fuentes">Ver ficha técnica</a>
+          </div>
+        </article>
+        <article class="card">
+          <img alt="Acabados interiores" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" />
+          <div class="card-body">
+            <span class="tag">Marca FESTER · Adhesivo PVA</span>
+            <h3>FESTER AD</h3>
+            <p>Adhesivo de usos múltiples base agua. En documentación de producto se indica uso como adherente o fortificador de yeso, pastas y morteros, no como adhesivo estructural de exterior.</p>
+            <p><strong>Uso principal:</strong> interiores y superficies porosas, según ficha correspondiente.</p>
+            <a class="btn" href="#fuentes">Ver ficha técnica</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid-2">
+      <div>
+        <p class="kicker">Química de formulación</p>
+        <h2>Intermedios químicos</h2>
+        <p class="lead">Un intermedio químico es una sustancia que sirve como materia prima o componente para fabricar otro producto. No siempre se vende al usuario final: entra en la receta del adhesivo, el sellador o el recubrimiento.</p>
+        <p class="lead">En la industria de la construcción, esos componentes suelen incluir resinas acrílicas, polímeros de acetato de vinilo (PVA), prepolímeros de poliuretano, resinas epóxicas, cementos, cargas minerales y aditivos. FESTER declara bases distintas según el producto: por ejemplo, FESTERBOND se formula con resinas acrílicas 100 % puras; SUPERSEAL P es un sellador de poliuretano; FESTERPLAST es un sistema epóxico de dos componentes.</p>
+        <p class="lead">En general, esos materiales pueden aportar mayor adherencia, resistencia, impermeabilidad, flexibilidad o durabilidad. <strong>No se afirma aquí la receta interna completa de cada producto FESTER</strong>, porque el fabricante no publica todos los intermedios de cada fórmula.</p>
+      </div>
+      <figure class="photo">
+        <img alt="Laboratorio y materiales" src="https://images.unsplash.com/photo-1532187863485-6ad1e1b906ea?auto=format&fit=crop&w=1200&q=80" />
+      </figure>
+    </div>
+  </section>
+
+  <section id="ficha">
+    <div class="wrap">
+      <p class="kicker">Documento de producto</p>
+      <h2>Ficha técnica</h2>
+      <p class="lead">Ejemplo real y verificable: <strong>FESTERBOND</strong>, adhesivo acrílico de usos múltiples. Datos tomados de fichas técnicas circuladas por distribuidores y de la ficha/página de producto en fester.com.mx. Otras referencias (FESTER AD, Superseal P, CR-65) tienen envases y rendimientos distintos.</p>
+      <div class="grid-2" style="margin-bottom:24px">
+        <figure class="photo">
+          <img alt="Aplicación de adherente sobre concreto" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" />
+        </figure>
+        <div>
+          <p class="tag">Producto de ejemplo</p>
+          <h3 style="font-size:28px;margin:8px 0 12px">FESTERBOND</h3>
+          <p class="lead">Líquido viscoso de color lechoso. Actúa como adherente, fortificador de mezclas y sellador de superficies porosas. Resistente a la humedad e intemperie; el fabricante indica que no se torna amarillo.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Nombre</th><td>FESTERBOND</td></tr>
+          <tr><th>Marca</th><td>FESTER (Henkel Capital, S.A. de C.V.)</td></tr>
+          <tr><th>Tipo de producto</th><td>Adhesivo / aditivo para concreto y morteros</td></tr>
+          <tr><th>Tipo de adhesivo</th><td>Adhesivo acrílico de usos múltiples (adherente, fortificador y sellador)</td></tr>
+          <tr><th>Base o composición</th><td>Resinas acrílicas 100 % puras, según la ficha y la ficha de producto oficial</td></tr>
+          <tr><th>Cómo se vende</th><td>Líquido listo para diluir o dosificar en obra</td></tr>
+          <tr><th>Presentación</th><td>Bote, cubeta o tambo</td></tr>
+          <tr><th>Tamaño / capacidad</th><td>1 L, 4 L, 19 L y 200 L (ficha técnica). En el sitio oficial también aparece caja con 6 botes de 1 L</td></tr>
+          <tr><th>Peso</th><td>No se publica un peso neto único; se comercializa por volumen</td></tr>
+          <tr><th>Rendimiento</th><td>Como adherente: 1.ª capa diluida 1:1 a 5 m²/L de la dilución; capa adherente sin diluir, 5 a 6 m²/L. Como sellador: 4–6 m²/L (porosa, 1:1) o 3–4 m²/L (muy porosa, 1:2), dos capas. Como fortificador: 1 L por cada 5 kg de cemento, o 8 a 10 L por saco de 50 kg</td></tr>
+          <tr><th>Método de aplicación</th><td>Brocha o rodillo sobre la superficie; o bien se sustituye parte del agua de la mezcla</td></tr>
+          <tr><th>Herramienta</th><td>Brocha, rodillo; revolvedora o cubeta para dosificar en mortero. No es un adhesivo de llana dentada tipo pegazulejo</td></tr>
+          <tr><th>Espesor recomendado</th><td>La ficha de FESTERBOND no fija un espesor de película único; se aplica en capa o se dosifica en la mezcla</td></tr>
+          <tr><th>Tiempo de secado</th><td>Como adherente, la mezcla se coloca antes de que seque la capa. El tiempo exacto depende de clima y soporte; consultar ficha vigente</td></tr>
+          <tr><th>Vida útil</th><td>12 meses en almacén, según ficha</td></tr>
+          <tr><th>Usos principales</th><td>Puente de unión concreto viejo–nuevo; morteros, yesos, lechadas, pinturas; sellado de superficies porosas; preparación de firmes para recubrimientos</td></tr>
+          <tr><th>Características (ficha)</th><td>Apariencia lechosa; densidad 1.00–1.03 g/cm³; pH 7.0–8.5; sólidos 25–27 %; adherencia a concreto a 28 días: mínimo 25 kg/cm² (método citado en ficha)</td></tr>
+          <tr><th>Almacenamiento</th><td>Lugar fresco, seco y protegido del sol. Estiba máxima según envase: 1 L (3), 4 L (4), 19 L (5), tambo (3)</td></tr>
+        </table>
+      </div>
+      <p class="note">Los datos técnicos pueden variar según el producto, la superficie y las condiciones de aplicación. Consultar siempre la ficha técnica oficial.</p>
+    </div>
+  </section>
+
+  <section id="venta">
+    <div class="wrap">
+      <p class="kicker">Comercialización</p>
+      <h2>¿Cómo se vende?</h2>
+      <p class="lead">Las presentaciones siguientes están publicadas por FESTER o en fichas técnicas del fabricante. Las fotos muestran el tipo de envase; el arte oficial está en el catálogo del sitio.</p>
+      <div class="packs">
+        <article class="pack">
+          <img alt="Botes de producto líquido" src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Botes — FESTERBOND</h3>
+            <p>1 L y 4 L. Tipo: tarro / bote. Uso: reparaciones, dosificación puntual y obras chicas.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Cubeta de material de construcción" src="https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Cubeta — FESTERBOND / Acriton</h3>
+            <p>FESTERBOND: 19 L. Impermeabilizantes acrílicos FESTER A: bote 4 L y cubeta 19 L (colores blanco y rojo, según disponibilidad de cada grado).</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Cartucho de sellador" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Cartucho y salchicha — SUPERSEAL P</h3>
+            <p>Cartucho 300 ml (caja de 12, blanco/gris en ficha Henkel). Salchicha 600 ml. Cubeta 26.5 L en gris. Uso: juntas elásticas.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Sacos de mortero" src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Saco — FESTER CR-65</h3>
+            <p>Saco de 25 kg. Tipo: polvo cementoso. Uso: impermeabilización de muros, sótanos y tanques, según ficha.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Contenedor industrial" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Tambo — FESTERBOND</h3>
+            <p>200 L. Tipo: tambor industrial. Uso: obra grande y dosificación continua.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Kit de dos componentes" src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Kit — FESTERPLAST</h3>
+            <p>El sitio oficial lista caja con 3 unidades de 2 L (sistema de 2 componentes). Uso profesional de resane y pegado.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="formatos">
+    <div class="wrap">
+      <p class="kicker">Clasificación visual para la investigación</p>
+      <h2>Formatos y presentaciones</h2>
+      <p class="lead">“Pequeño, mediano y grande” es solo una ayuda escolar. Las presentaciones exactas dependen del producto disponible en cada línea FESTER.</p>
+      <div class="packs">
+        <article class="pack">
+          <img alt="Trabajo de reparación" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato pequeño</h3>
+            <p>Ejemplo: FESTERBOND 1 L; SUPERSEAL P cartucho 300 ml; FESTER A bote 4 L. Ideal para reparaciones y juntas cortas.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Obra residencial" src="https://images.unsplash.com/photo-1600585154340-0ef3c08c0415?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato mediano</h3>
+            <p>Ejemplo: FESTERBOND 4 L o cubeta 19 L; CR-65 saco 25 kg; Superseal salchicha 600 ml. Ideal para vivienda o obra media.</p>
+          </div>
+        </article>
+        <article class="pack">
+          <img alt="Escala de obra" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80" />
+          <div class="inner">
+            <h3>Formato grande</h3>
+            <p>Ejemplo: FESTERBOND tambo 200 L; SUPERSEAL P cubeta 26.5 L. Ideal para uso profesional continuo.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="rendimiento">
+    <div class="wrap">
+      <p class="kicker">Dosificación</p>
+      <h2>Rendimiento y espesor de aplicación</h2>
+      <p class="lead">El <strong>rendimiento</strong> es cuánta superficie o cuánta mezcla se obtiene con un litro o un kilo. Cambia si el muro es más poroso, si se diluye el producto o si se dan más manos. El <strong>espesor</strong> es el grosor de la capa; no todos los productos FESTER lo declaran igual.</p>
+      <div class="icons">
+        <article class="char"><div class="icon">m²</div><strong>Rendimiento</strong><p>FESTERBOND adherente: 5–6 m²/L sin diluir. SUPERSEAL P: el rendimiento se expresa en metros lineales según ancho y profundidad de junta.</p></article>
+        <article class="char"><div class="icon">mm</div><strong>Espesor</strong><p>CR-65 sí declara espesores de sistema, por ejemplo 2,0 mm (3 kg/m² en 2 capas) para humedad de subsuelo, hasta 5,0 mm como máximo de capas. FESTERBOND no se dosifica por milímetros de película.</p></article>
+        <article class="char"><div class="icon">⏱</div><strong>Tiempo de secado</strong><p>Depende del producto. SUPERSEAL P forma película en minutos según ficha ASTM citada; el curado total de una junta varía con humedad y temperatura.</p></article>
+        <article class="char"><div class="icon">⚒</div><strong>Herramientas</strong><p>Brocha o rodillo (FESTERBOND, acrílicos); pistola de calafateo (Superseal); llana o brocha en cementosos CR-65.</p></article>
+      </div>
+      <p class="note">Los datos técnicos pueden variar según el producto, la superficie y las condiciones de aplicación. Consultar siempre la ficha técnica oficial.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Desempeño</p>
+      <h2>Características principales</h2>
+      <div class="icons">
+        <article class="char"><div class="icon">⊕</div><strong>Alta adherencia</strong><p>FESTERBOND declara adherencia mínima a concreto en su ficha.</p></article>
+        <article class="char"><div class="icon">▣</div><strong>Resistencia</strong><p>Selladores y epóxicos pensados para intemperie, agua o impacto, según línea.</p></article>
+        <article class="char"><div class="icon">∞</div><strong>Durabilidad</strong><p>Sistemas de techo con distinta duración declarada por el fabricante.</p></article>
+        <article class="char"><div class="icon">💧</div><strong>Impermeabilidad</strong><p>Núcleo histórico de la marca: acrílicos, asfálticos, cementosos y poliuretanos.</p></article>
+        <article class="char"><div class="icon">✓</div><strong>Fácil aplicación</strong><p>Muchos productos se aplican con brocha, rodillo o pistola.</p></article>
+        <article class="char"><div class="icon">🛡</div><strong>Protección</strong><p>Desde la cimentación hasta el techo, según el discurso oficial de la marca.</p></article>
+        <article class="char"><div class="icon">〰️</div><strong>Flexibilidad</strong><p>Aplica sobre todo a selladores elásticos e impermeabilizantes elastoméricos.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid-2">
+      <figure class="photo">
+        <img alt="Arquitectura contemporánea en México" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" />
+      </figure>
+      <div>
+        <p class="kicker">La empresa</p>
+        <h2>De la importación de 1949 a Henkel</h2>
+        <p class="lead">En 1954 FESTER introdujo en México los primeros impermeabilizantes asfálticos en frío. En los años 60 nació la Red de Distribuidores y empezó la fabricación propia (acrílicos, epóxicos y aditivos para concreto).</p>
+        <p class="lead">En 1982 la adquirió Industrias Resistol. En 1993 compró Revoplas (marca Acriton) y fortaleció la planta de Salamanca, Guanajuato. En 2003 Henkel compró Resistol y, con ella, FESTER.</p>
+        <p class="lead">Henkel Capital opera oficinas en Interlomas (Estado de México) y plantas en Ecatepec, Toluca y Salamanca. Atención al consumidor: 01 800 FESTER 7 (01 800 3378377) y web.fester@henkel.com.</p>
+        <div class="features" style="grid-template-columns:1fr 1fr;margin-top:16px">
+          <article class="feature"><strong>Construcción</strong><p>Edificación residencial, civil e industrial.</p></article>
+          <article class="feature"><strong>Industria</strong><p>Pisos, anclajes, recubrimientos y juntas de planta.</p></article>
+          <article class="feature"><strong>Innovación</strong><p>Tecnologías como Fibre Force o líneas Cool Roof / Green Shield.</p></article>
+          <article class="feature"><strong>Química</strong><p>Siete familias: impermeabilizantes, adhesivos para concreto, reparadores, grouts y anclajes, aditivos, tratamientos y selladores.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sources" id="fuentes">
+    <div class="wrap">
+      <p class="kicker">Documentación</p>
+      <h2>Fuentes consultadas</h2>
+      <ul>
+        <li>Sitio oficial: <a href="https://www.fester.com.mx/" target="_blank" rel="noopener">www.fester.com.mx</a> — descripción de marca, productos y páginas de FESTERBOND y SUPERSEAL P.</li>
+        <li>Historia corporativa: Fester Guatemala / catálogos Henkel-FESTER y comunicado de Henkel México (70 años, 2019).</li>
+        <li>Fichas técnicas: FESTERBOND (presentaciones 1, 4, 19 y 200 L; rendimientos; caducidad 12 meses); FESTER SUPERSEAL P (datasheets.tdx.henkel.com); FESTER CR-65 (saco 25 kg y tabla de kg/m²); FESTER A (bote 4 L / cubeta 19 L, caducidad 24 meses).</li>
+        <li>Guía / prontuario de soluciones FESTER (Henkel DAM) y condiciones de uso de Henkel Capital, S.A. de C.V.</li>
+        <li>Logotipo: wordmark oficial de FESTER reproducido desde archivo de marca de uso público para identificación (propiedad de Henkel).</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <strong>FESTER | Adhesivos e Intermedios Químicos</strong>
+          <p style="max-width:48ch;margin-top:8px;color:#9fb0be">Investigación escolar. Esta página no es el sitio oficial de FESTER ni de Henkel y no sustituye fichas técnicas, etiquetas ni asesoría profesional.</p>
+        </div>
+        <div>
+          <a href="#fuentes">Fuentes consultadas</a> ·
+          <a href="https://www.fester.com.mx/" target="_blank" rel="noopener">Contacto oficial</a> ·
+          <a href="https://www.fester.com.mx/meta/condiciones.html" target="_blank" rel="noopener">Aviso / condiciones</a>
+        </div>
+      </div>
+      <small>Proyecto escolar sobre adhesivos e intermedios químicos. Marca y logotipo: FESTER / Henkel. Consultar siempre www.fester.com.mx.</small>
+    </div>
+  </footer>
+</body>
+</html>
